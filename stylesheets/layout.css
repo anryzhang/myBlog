@@ -1,0 +1,16 @@
+/*base-footer start*/
+.base-footer{
+    background:url(../images/fonter_bg.png) repeat-x 0px 0px; width:100%; height:91px; margin-top:10px; overflow:hidden;
+}
+.footer-cover{
+    width:1000px; height:auto; overflow:hidden; margin:0px auto; text-align:center; overflow:hidden; padding-top:15px;
+}
+.footer-cover p{
+    width:100%; clear:both; color:#FFF; padding-bottom:3px;
+}
+.footer-cover p span{
+    padding-right:5px;
+}
+.footer-cover p a,.footer-cover p a:hover{
+    color:#FFF; padding:0px 3px;
+}
