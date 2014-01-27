@@ -68,5 +68,6 @@ make
 sudo make install
 </pre>
 接着就可以通过后面的一个 Hello world 的例子来测试是否运行了。
-
+<p>安装后在cmd命令下输入：node -v</p>
+<p>检查一下能否正确输出版本号即可</p>
 PS: 其实在 windows 下，还有其他的安装方法。具体百度一下就有。
