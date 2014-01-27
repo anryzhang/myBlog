@@ -67,10 +67,10 @@
     <script type="text/javascript">
         var headImgArr = [];
         {% for imgsrc in site.headimg %}
-            headImgArr.push("{{ imgsrc.item }}");
+            headImgArr.push("{{ site.url }}{{ imgsrc.item }}");
         {% endfor %}
         if(headImgArr.length <= 0) {
-            headImgArr = ["/themes/violet/images/hdbg03.jpg"];
+            headImgArr = ["{{ site.url }}/themes/violet/images/hdbg03.jpg"];
             var item = 0;
         } else {
             var item = Math.floor(Math.random() * (headImgArr.length));
