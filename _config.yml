@@ -9,7 +9,7 @@ safe: false
 title: Violet
 subTitle: Jekyll blog.
 description: 基于 Jekyll 搭建起来的博客。
-url: http://anryzhang.github.io
+url: http://anryzhang.github.io/myBlog
 feed: /atom.xml
 
 #菜单配置
