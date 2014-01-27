@@ -9,7 +9,7 @@ layout: default
     </div>
     <div class="meta">
         Posted
-        <time class="text" datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date:"%Y-%m-%d" }}</time>  |
+        <div class="text" datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date:"%Y-%m-%d" }}</div>  |
         {% if page.author != null %}
         By {{ page.author }}
         {% else %}
