@@ -34,11 +34,6 @@ headimg:
   - item: /themes/violet/images/hdbg3.jpg
   - item: /themes/violet/images/hdbg4.jpg
 
-#关注我
-follow:
-  - class: fa-github
-    url: http://github.com/anryzhang
-
 
 #作者信息
 author:

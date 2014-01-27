@@ -1452,3 +1452,16 @@ p.v-my-face { padding-bottom: 0; margin: 0 auto 10px auto; text-align: right}
 .head-tips p a {
 	color: #4d8bbc;
 }
+
+.footer-cover{
+    width:940px; height:auto; overflow:hidden; margin:0px auto; text-align:center; overflow:hidden; padding-top:15px;
+}
+.footer-cover p{
+    width:100%; clear:both; color:#FFF; padding-bottom:3px;
+}
+.footer-cover p span{
+    padding-right:5px;
+}
+.footer-cover p a,.footer-cover p a:hover{
+    color:#FFF; padding:0px 3px;
+}
