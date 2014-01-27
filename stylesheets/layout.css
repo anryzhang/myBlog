@@ -1,6 +1,48 @@
 header h2 small a{
     color: #9ddcff;
 }
+/*²Ëµ¥ */
+#violet-nav {
+    width: 100%;
+    height: 48px;
+    background: rgba(255,255,255,0.2);
+    border-top: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.nav {}
+.nav-list {
+    list-style: none;
+    width: 720px;
+    margin: 0 auto;
+    line-height: 48px;
+    height: 48px;
+}
+.nav-item {
+    float: left;
+    padding: 8px 15px 8px 0;
+    line-height: 32px;
+    vertical-align: middle;
+}
+.nav-item a {
+    display: block;
+    line-height: 32px;
+    padding: 0 20px;
+    border-radius: 3px 3px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 14px;
+    -webkit-transition: background .4s ease-in-out;
+    -moz-transition: background .4s ease-in-out;
+    -ms-transition: background .4s ease-in-out;
+    -o-transition: background .4s ease-in-out;
+    transition: background .4s ease-in-out;
+}
+.nav-item a:hover,
+.nav-item-active a {
+    background: rgba(0,0,0,0.8);
+    text-decoration: none;
+}
+
 
 /*base-footer start*/
 .base-footer {
