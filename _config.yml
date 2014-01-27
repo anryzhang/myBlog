@@ -4,7 +4,7 @@ baseurl:/myBlog
   |   |-- footer.html
   |   |-- header.html
   |-- _posts
-  |   |--2014-01-27-fist.html
+  |   |--2014-01-27-fist.md
   |-- _layouts
   |   |-- default.html
   |-- index.html
