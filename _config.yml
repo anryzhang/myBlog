@@ -15,7 +15,7 @@ feed: /atom.xml
 #菜单配置
 nav:
   - text: 首页
-    url: /index.html
+    url: /myBlog/index.html
   - text: 文章归档
     url: /archives.html
   - text: 作品
