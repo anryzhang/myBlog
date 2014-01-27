@@ -1,0 +1,10 @@
+/myBlog
+  ├── _config.yml
+  ├── _includes
+  |   ├── footer.html
+  |   └── header.html
+  ├── _posts
+  |   ├──2014-01-27-fist.html
+  ├── _layouts
+  |   └── default.html
+  └── index.html
