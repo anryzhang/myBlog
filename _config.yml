@@ -6,20 +6,20 @@ paginate: 8
 safe: false
 
 #站点基础配置
-title: Violet
-subTitle: Jekyll blog.
+title: diy1818
+subTitle: my blog.
 description: 基于 Jekyll 搭建起来的博客。
 url: http://anryzhang.github.io/myBlog
-feed: /atom.xml
+feed: myBlog/atom.xml
 
 #菜单配置
 nav:
   - text: 首页
     url: /myBlog/index.html
   - text: 文章归档
-    url: /archives.html
+    url: /myBlog/archives.html
   - text: 作品
-    url: /works.html
+    url: /myBlog/works.html
   - text: 联系我
     url: http://www.diy1818.com/a/aboutus/index.html
   - text: 博客源代码
