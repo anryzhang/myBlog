@@ -8,5 +8,4 @@ baseurl:/myBlog
           |   |--2014-01-27-hello-jekyll.md
           |-- _layouts
           |   |-- default.html
-          |   |-- post.html
           |-- index.html
