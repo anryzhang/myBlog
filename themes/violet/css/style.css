@@ -558,3 +558,16 @@ a.toTop:hover {
     vertical-align: top;
 }
 
+
+.footer-cover{
+    width:940px; height:auto; overflow:hidden; margin:0px auto; text-align:center; overflow:hidden; padding-top:15px;
+}
+.footer-cover p{
+    width:100%; clear:both; color:#FFF; padding-bottom:3px;
+}
+.footer-cover p span{
+    padding-right:5px;
+}
+.footer-cover p a,.footer-cover p a:hover{
+    color:#FFF; padding:0px 3px;
+}
