@@ -1,6 +1,5 @@
 markdown: rdiscount
 pygments: true
-plugins: ./_plugins
 paginate: 8
 
 safe: false
