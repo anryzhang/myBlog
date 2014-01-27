@@ -53,7 +53,7 @@ pages是怎么样的一个概念，你可以参考 <pages.github.com>
     //尝试着编辑，上传，更新看看
     vi index.html
     ⋯⋯
-<pre>
+</pre>
 ###一些其他的内容
 ####简单的更新本地代码到 github
     git add . 
