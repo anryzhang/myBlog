@@ -32,7 +32,7 @@
                 <ul class="nav-list">
                     {% for link in site.nav %}
                     {% assign active = nil %}
-                    {% if page.url == link.url%}
+                    {% if page.url == {{site.url}}link.url%}
                       {% assign active = 'nav-item-active' %}
                     {% endif %}
                     <li class="nav-item {{ active }}">
