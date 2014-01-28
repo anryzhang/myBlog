@@ -78,6 +78,7 @@ var violet = violet || {
         var navs, url, cur, i;
 //        navs = $("#J_nav li a");
         navs = $("#violet-nav li");
+        console.log(navs);
         for(i = 1 ; i < navs.length; i++ ){
             url = navs[i].href;
             cur = window.location.href;
