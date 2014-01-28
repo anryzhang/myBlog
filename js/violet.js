@@ -6,7 +6,7 @@
 var violet = violet || {
     VERSION: '2.0',
     checkViolet: function() {
-        var str = document.domain, rule = /^(www\.pizn\.me)?$/, url = "http://www.pizn.me", cookie_Key="__isViole__", cookie_value="Y";
+        var str = document.domain, rule = /^(www\.diy1818\.com)?$/, url = "http://www.diy1818.com", cookie_Key="__isViole__", cookie_value="Y";
         if(!rule.test(str)) {
             //document.cookie = cookie_key+'='+cookie_value+';expires='+new Date(new Date().getTime()+3600*24*30*1000).toUTCString();
             window.location.replace(url);
@@ -27,7 +27,7 @@ var violet = violet || {
         }
         setTimeout(show, b);    
     },
-    selfPhoto: function() {
+    /*selfPhoto: function() {
         var ran = 1, faceImg;
         function getRandom(n){
             ran = Math.floor(Math.random()*n+1);
@@ -73,7 +73,7 @@ var violet = violet || {
                     break;      
             }   
         }
-    },
+    },*/
     highLightMenu: function() {
         var navs, url, cur, i;
         navs = $("#J_nav li a");
@@ -134,19 +134,19 @@ var violet = violet || {
                                        </article>';
                             $(id).append(project);
                         }
-                        project = '<p class="v-more-right v-project-mor"><a href="https://github.com/' + user + '" target="_blank" title="PIZn on github"><span>&#10149;</span>All Projects</a></p>';
+                        project = '<p class="v-more-right v-project-mor"><a href="https://github.com/' + user + '" target="_blank" ><span>&#10149;</span>All Projects</a></p>';
                         $(id).append(project);
                     }
                 } else {
                     errmsg = '<article class="v-project-normal"><p>通过项目的开发过程，能够得到更多的锻炼。</p>\
-                              <p>在 GitHub 上有 PIZn 的几个小项目，例如 Alice, ColorCode, Blog 等等。</p></article>\
-                              <p class="v-more-right"><a href="https://github.com/' + user + '" target="_blank" title="PIZn on github"><span>&#10149;</span>All Projects</a></p>';
+                              </article>\
+                              <p class="v-more-right"><a href="https://github.com/' + user + '" target="_blank" ><span>&#10149;</span>All Projects</a></p>';
                     $(id).append(errmsg);
                 }
             }
         });
     }
-}
+};
 /**
  *  goTop for violet
  */
@@ -198,14 +198,14 @@ violet.goTop = {
             that._scrollScreen();
         });
     }
-}
+};
 $(document).ready(function(){
     //violet.checkViolet();
     //highLightMenu    
     violet.highLightMenu();
     violet.goTop.run();
     //selfPhoto
-    var showSelfPhoto = $("#J_myFace");
+    /*var showSelfPhoto = $("#J_myFace");
     showSelfPhoto.hover(
         function() {
             $(this).addClass('v-my-face-hover');
@@ -213,15 +213,15 @@ $(document).ready(function(){
         function(){
             $(this).removeClass('v-my-face-hover');
         });
-    showSelfPhoto.toggle(function() { 
+    showSelfPhoto.toggle(function() {
         if($("#J_myFace_img").hasClass('flipInYR')) {
             $("#J_myFace_img").removeClass('flipInYR');
-        }       
+        }
         $("#J_myFace_img").addClass('flipInYL');
         if($(this).hasClass('v-my-face-hover')){
                 $(this).removeClass('v-my-face-hover');
-            }       
-            violet.selfPhoto();     
+            }
+            violet.selfPhoto();
         },
         function() {
             if($("#J_myFace_img").hasClass('flipInYL')) {
@@ -231,7 +231,7 @@ $(document).ready(function(){
             if($(this).hasClass('v-my-face-hover')){
                 $(this).removeClass('v-my-face-hover');
             }
-            violet.selfPhoto(); 
-        }
+            violet.selfPhoto();
+        }*/
     );
-})
+});

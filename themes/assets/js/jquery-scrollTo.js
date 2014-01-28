@@ -189,7 +189,7 @@
 				$elem.animate( attr, duration, settings.easing, callback && function(){
 					callback.call(this, target, settings);
 				});
-			};
+			}
 
 		}).end();
 	};
@@ -213,6 +213,6 @@
 
 	function both( val ){
 		return typeof val == 'object' ? val : { top:val, left:val };
-	};
+	}
 
 })( jQuery );
