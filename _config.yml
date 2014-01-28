@@ -29,10 +29,10 @@ themes: /themes/assets
 
 #配置你喜欢的顶部背景图片
 headimg:
-  - item: /themes/violet/images/hdbg1.jpg
-  - item: /themes/violet/images/hdbg2.jpg
-  - item: /themes/violet/images/hdbg3.jpg
-  - item: /themes/violet/images/hdbg4.jpg
+  - item: /themes/assets/images/hdbg1.jpg
+  - item: /themes/assets/images/hdbg2.jpg
+  - item: /themes/assets/images/hdbg3.jpg
+  - item: /themes/assets/images/hdbg4.jpg
 
 
 #作者信息

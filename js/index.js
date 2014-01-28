@@ -49,8 +49,8 @@ $(document).ready(function() {
         )
     }
     setTimeout(hoverFlower, 13000);
-    violet.selfPhoto();
+    //violet.selfPhoto();
     
     //show github Porject    
-    violet.getGitHub("pizn", "3", "#J_porject");
+    violet.getGitHub("anryzhang", "3", "#J_porject");
 });

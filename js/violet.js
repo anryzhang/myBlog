@@ -199,11 +199,11 @@ violet.goTop = {
         });
     }
 };
-$(document).ready(function(){
+//$(document).ready(function(){
     //violet.checkViolet();
     //highLightMenu    
-    violet.highLightMenu();
-    violet.goTop.run();
+    //violet.highLightMenu();
+    //violet.goTop.run();
     //selfPhoto
     /*var showSelfPhoto = $("#J_myFace");
     showSelfPhoto.hover(
@@ -233,5 +233,10 @@ $(document).ready(function(){
             }
             violet.selfPhoto();
         }*/
-    );
-});
+   // );
+
+    $(jQuery).ready(function(){
+        violet.highLightMenu();
+        violet.goTop.run();
+    });
+//});
