@@ -76,12 +76,14 @@ var violet = violet || {
     },*/
     highLightMenu: function() {
         var navs, url, cur, i;
-        navs = $("#J_nav li a");
+//        navs = $("#J_nav li a");
+        navs = $("#violet-nav li");
         for(i = 1 ; i < navs.length; i++ ){
             url = navs[i].href;
             cur = window.location.href;
             if(cur.indexOf(url) !=-1) {
-                navs[i].className = "current";
+//                navs[i].className = "current";
+                navs[i].className = "nav-item-active";
                 navs[0].className = "";
             }
             if(cur != navs[0].href) {
