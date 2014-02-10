@@ -54,16 +54,113 @@ keywords: javascript 面向对象编程
 </pre>
 <h4>构造函数</h4>
 <p>构造函数中的this,指的是实例对象</p>
+<pre style="color: #008000">
+    var con_obj = function(p){
+        this.p = p;
+    }
 
+    con_obj.prototype.m = function(){
+        return this.p;
+    }
 
+    var test_o = new con_obj('test');
+    test_o.p //test
+    test_o.m() // test
+</pre>
+<p>上面代码定义了构造函数con_obj.由于this指向实例对象,所以在构造函数内部定义了this.p.就相当于定义的实例对象里有一个p属性,然后m方法就可以返回这个实例化的P属性.</p>
 
+<h4>普通函数</h4>
+<p>普通函数内部的this,指的是函数运行时所在的对象.</p>
+<pre style="color: #008000">
+    function f(){
+        console.log(this.m);
+    }
+    var m = 1;
+    f(); //1
 
+    //函数f是在全局环境中运行的,this指向的就是全局对象window,所以可以读取全局变量m的值.
+</pre>
 
+<pre style="color: #008000">
+    function f(){
+        console.log(this.m);
+    }
 
+    var obj = {m:1};
+    obj.f = f;
+    obj.f() //1
 
+    var obj2 = {m : 2};
+    obj2.f = f;
+    obj2.f() //2
 
+    //当f在obj下运行时,this指向的是obj, 当在obj2下运行时,this指向的是obj2.
+</pre>
 
+<p>有时,某个方法m位于多层对象的内部,为了避免this指向全局对象,可以只将m函数所在的对象赋值给上层对像.如下</p>
+<pre style="color: #008000">
+    var a = {
+        b:{
+            m:function(){
+                console.log(this.p)
+            },
+            p:'test'
+        }
+    };
 
+    var h = a.b;
+    h.m();//test
+</pre>
+<h4>结论</h4>
+<p>
+    如果是在全局环境下运行,就代表全局对象window;
+    如果是在某个对象中运行,就代表该对象.
+    函数中使用多个this的方法如下:
+</p>
+<pre style="color: #008000">
+    var o = {
+        f1: function(){
+            console.log(this);//object
+            var that = this;
+            var f2 = function(){
+                console.log(that);//object
+            }();
+        }
+    }
+
+    o.f1();
+
+    //上面代码定义了变量that,固定指向外层的this,
+    然后在内层使用that,就不会发生this的改变.
+</pre>
+
+<h3>call 方法</h3>
+<p>
+    函数的call方法可以改变this指向的对象.然后再调用该函数.
+</p>
+<pre style="color: #008000">
+    fun.call(contest,[arg1],[arg2],...);
+
+    //call方法的第一个参数就是this所要指向的那个对象,
+    后面的参数则是函数调用时所需要的参数,
+    如果this所要指向的那个对象,
+    设定为null或undefined,则等同指定全局对象.
+
+    var n = 123;
+
+    var o = { n : 456 };
+
+    function a() {
+        console.log(this.n);
+    }
+
+    a.call() // 123
+    a.call(null) // 123
+    a.call(undefined) // 123
+    a.call(window) // 123
+    a.call(o) // 456
+
+</pre>
 
 
 
