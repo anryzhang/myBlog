@@ -264,8 +264,60 @@ keywords: javascript 面向对象编程
     plus5(10) // 15
 </pre>
 
+<p>
+    bind方法每运行一次就会返回一个新函数,这个会产生一些问题,如监听事件时,因click事件
+    绑定bind方法后,会生成一个匿名函数.这样会导致无法取消绑定.
+    <pre style="color: #008000">
+        var o = {};
+        o.p = 123;
+        o.m = function(){
+            console.log(this.p);
+        };
+
+        var  listener= o.m.bind(o);
+
+        var ele = document.getElementById("mydiv1");
+
+        ele.addEventListener('click', listener);
+        //  ...
+        ele.removeEventListener('click', listener);
+    </pre>
+</p>
+<p>
+    对于那些不支持bind方法的老式浏览器，可以自行定义bind方法。
+    <pre style="color: #008000">
+    if(!('bind' in Function.prototype)){
+        Function.prototype.bind = function(){
+            var fn = this;
+            var context = arguments[0];
+            var args = Array.prototype.slice.call(arguments, 1);
+            return function(){
+                return fn.apply(context, args);
+            }
+        }
+    }
 
 
+    除了用bind方法绑定函数运行时所在的对象，还可以使用jQuery的$.proxy方法，它与bind方法的作用基本相同。
+
+    $("#button").on("click", $.proxy(o.f, o));
+    上面代码表示，$.proxy方法将o.f方法绑定到o对象。
+    </pre>
+</p>
+<h4>bind方法改写其它方法</h4>
+<pre>
+    var push = Function.prototype.call.bind(Array.prototype.push);
+    var pop = Function.prototype.call.bind(Array.prototype.pop);
+
+    var a = [1 ,2 ,3];
+    push(a, 4)
+    a // [1, 2, 3, 4]
+    //等同于
+    a.push(4);
+
+    pop(a)
+    a // [1, 2, 3]
+</pre>
 
 
 
