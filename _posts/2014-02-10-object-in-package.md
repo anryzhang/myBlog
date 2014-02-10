@@ -68,7 +68,29 @@ keywords: JavaScript,封装
         则返回undefined。
     </strong>
 </p>
+<section>
+    举例来说，如果让某个函数的prototype属性指向一个数组，
+    就意味着该函数可以用作数组的构造函数，
+    因为它生生成的实例对象都可以通过prototype属性调用数组方法。
+    <pre>
+        function MyArray (){}
 
+        MyArray.prototype = new Array();
+
+        var mine = new MyArray();
+        mine.push(1, 2, 3);
+
+        mine.length // 3
+        mine instanceof Array // true
+    </pre>
+    <p>
+        上面代码的mine是MyArray的实例对象，
+        由于MyArray的prototype属性指向一个数组，
+        使得mine可以调用数组方法（这些方法其实定义在数组的prototype对象上面）。
+        至于最后那行instanceof表达式，我们知道instanceof运算符用来比较一个对象
+        是否为某个构造函数的实例，最后一行表示mine为Array的实例
+    </p>
+</section>
 
 
 
