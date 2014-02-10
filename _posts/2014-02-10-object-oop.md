@@ -45,6 +45,25 @@ keywords: javascript 面向对象编程
 <p>注意:原始类型的值不是对象,所以不能用instanceof运算符来判断类型,但可以用 typeof 可判断.</p>
 <p>instanceof运算符实质就是找出instanceof运算符左侧的实例对象的原型键上各个原型的constructor属性,然后确定这些属性中是否包含instanceof运算符右侧的构造函数.</p>
 
+<h3>this</h3>
+<p>javascript允许动态调用对象的属性.如果a对象和b对象都有一个m属性,javascript在调用m时,会动态切换,这时可能会属a也可以属b,这就要靠this来办到.</p>
+<p>如果处在全局环境,this就指顶层对象 (window),如果不处在全局环境,this就指对属性求值时所在的对象.</p>
+<h4>全局环境</h4>
+<pre>
+    this === window //true
+</pre>
+<h4>构造函数</h4>
+<p>构造函数中的this,指的是实例对象</p>
+
+
+
+
+
+
+
+
+
+
 
 
 
