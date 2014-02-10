@@ -5,12 +5,14 @@ description: JavaScript-封装
 keywords: JavaScript,封装
 ---
 <h2>原型(protytype)对象</h2>
-<style>
-    pre{
-        color: #008000;
-        font-weight: bold;
-    }
-</style>
+<div>
+    <style type="text/css">
+        pre{
+            color: #008000;
+            font-weight: bold;
+        }
+    </style>
+</div>
 <p>
     javascript通过构造函数生成新对象,因此,构造函数可以视为实例对像的模板,实例对象的属性和方法可以定义在构造函数内部.
 </p>
@@ -58,7 +60,7 @@ keywords: JavaScript,封装
     比如，a对象是b对象的原型，b对象是c对象的原型，以此类推。因为追根溯源，
     最源头的对象都是从Object构造函数生成（使用new Object()命令），
     所以如果一层层地上溯，所有对象的原型最终都可以上溯到Object.prototype。
-    Object.prototype的原型是没有任何属性和方法的null
+    Object.prototype的原型是没有任何属性和方法的null<br>
     <strong>
         “原型链”的作用在于，当读取对象的某个属性时，
         JavaScript引擎先寻找对象本身的属性，
@@ -121,12 +123,12 @@ keywords: JavaScript,封装
         上面代码表示a是构造函数Array的实例对象，但是a自身没有contructor属性。
         该属性其实是读取原型链上面Array.prototype.contructor属性。
         可以用来分辨prototype对象到底定义在哪个构造函数上面。如下
-        <pre>
-            function FOO(){}
-            FOO.prototype.contructor === FOO;
-            // true
-        </pre>
     </p>
+    <pre>
+        function FOO(){}
+        FOO.prototype.contructor === FOO;
+        // true
+    </pre>
 </section>
 <h3>Object.getPrototypeOf方法</h3>
 <section>
