@@ -82,6 +82,15 @@ keywords: JavaScript,封装
 
         mine.length // 3
         mine instanceof Array // true
+
+        // 等同于
+
+        Array in [
+            MyArray.prototype.constructor, // 即MyArray
+            Array.prototype.constructor, // 即Array
+            Object.prototype.constructor // 即Object
+        ]
+
     </pre>
     <p>
         上面代码的mine是MyArray的实例对象，
@@ -92,9 +101,110 @@ keywords: JavaScript,封装
     </p>
 </section>
 
+<h2>
+    constructor属性
+</h2>
+<section>
+    <p>
+        prototype对象有一个constructor属性，默认指向prototype对象所在的构造
+        函数。可以被所有实例对象继承。
+    </p>
+    <pre>
+        var a = new Array();
+        a.hasOwnProperty('constructor');
+        //false
+        a.constructor === Array.prototype.constructor
+        //true
+    </pre>
 
+    <p>
+        上面代码表示a是构造函数Array的实例对象，但是a自身没有contructor属性。
+        该属性其实是读取原型链上面Array.prototype.contructor属性。
+        可以用来分辨prototype对象到底定义在哪个构造函数上面。如下
+        <pre>
+            function FOO(){}
+            FOO.prototype.contructor === FOO;
+            // true
+        </pre>
+    </p>
+</section>
+<h3>Object.getPrototypeOf方法</h3>
+<section>
+    <p>
+        getPrototypeOf方法返回一个对象的原型。
+    </p>
+    <pre>
+        Object.getPrototypeOf({}) === Object.prototype
+        //true
+        function F(){}
+        Object.getPrototypeOf(F) === Function.prototype
+        //true
 
+        var f = new F();
+        Object.getPrototypeOf(f) === F.prototype
+        // true
 
+    </pre>
+</section>
+<h3>Object.create方法</h3>
+<section>
+    <p>
+        Object对象的create方法用于生成新的对像。
+        它接受一个原型对象作为参数，返回一个新对象，
+        后者完全继承前者的属性。
+    </p>
+    <pre>
+        var o1 = {p:1};
+        var o2 = Object.create(o1);
+        console.log(o2.p);
+        //1
+    </pre>
+
+    <p>
+        如果老式浏览器不支持Object.create方法，可以用下面代码代替
+    </p>
+    <pre>
+        if(typeof Object.create !== 'function'){
+            Object.create = function(o){
+                function F(){}
+                F.prototype = o;
+                return new F();
+            }
+        }
+        //Object.create方法实质是新建一个构造函数F，
+        然后让F的prototype属性指向作为原型的对象o,
+        最后返回一个F的实例，从而实现让实例继承o的属性。
+    </pre>
+    <P>
+        Object.create方法使用的时候,必须提供对象原型,否则会报错.
+
+    </P>
+    <p>Object.create方法可以接受两个参数,第一个是对象的原型,
+        第二个是描述属性的attributes对象.
+    </p>
+    <pre>
+        //Object.create(prototype,propDescObj)
+
+        var o = Object.create(Object.prototype,{
+            p1:{value:123, enumerable:true},
+            p2:{value:"abc", enumerable:true},
+        });
+        o.p1; //123
+        o.p2; //"abc"
+    </pre>
+    <p>isPrototypeOf方法</p>
+    <p>
+        该方法用来判断一个对象是否是另一个对象的原型.
+    </p>
+    <pre>
+        var o1 = {};
+        var o2 = Object.create(o1);
+        var o3 = Object.create(o2);
+
+        console.log(o2.isPrototypeOf(o3));//true
+        console.log(o1.isPrototypeOf(o1));//true
+    </pre>
+</section>
 
 
 
