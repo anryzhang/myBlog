@@ -7,7 +7,7 @@ keywords: JavaScript,封装
 <h2>原型(protytype)对象</h2>
 <div>
     <style type="text/css">
-        pre{
+        .main-article pre{
             color: #008000;
             font-weight: bold;
         }
