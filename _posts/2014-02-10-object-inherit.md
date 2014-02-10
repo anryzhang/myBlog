@@ -6,13 +6,15 @@ keywords: JavaScript-继承
 ---
 
 <h2>__proto__属性</h2>
-<style type="text/css">
-    .main-article pre{
-        color: #008000;
-        font-weight: bold;
-    }
+<div>
+    <style type="text/css">
+        .main-article pre{
+            color: #008000;
+            font-weight: bold;
+        }
 
-</style>
+    </style>
+</div>
 <p>
     每个对象都 有一个内部属性__proto__,
     指向这个对象的原型对象,
