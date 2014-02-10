@@ -161,6 +161,117 @@ keywords: javascript 面向对象编程
     a.call(o) // 456
 
 </pre>
+<h3>apply方法</h3>
+<p>
+    apply方法与call方法的作用类似,也是改变this指向的对象.
+    区别在于apply方法的第二个参数是一个数组,该数组的所有成员 依次作为参数,传入原函数.
+    <pre style="color: #008000">
+        fun.apply(context,[arg1,arg2,...]);
+
+        function f(x,y){ console.log(x+y); }
+        f.call(null,1,1) // 2
+        f.apply(null,[1,1]) // 2
+
+        //上面的f函数本来接受两个参数，
+        使用apply方法以后，就变成可以接受一个数组作为参数
+    </pre>
+</p>
+<p>
+    利用apply这一点可以找出数组中最大元素的函数.
+</p>
+<pre style="color: #008000">
+    //找出数组中最大元素
+    var a = [10,2,3,4,15,16,9];
+    Math.max.apply(null,a);
+    // 16
+
+    通过apply方法，利用构造函数Array将数组的空元素变成undefined。
+
+    Array.apply(null, ["a",,"b"])
+    // [ 'a', undefined, 'b' ]
+
+    空元素与undefined的差别在于，数组的foreach方法会跳过空元素，
+    但是不会跳过undefined。因此，遍历内部元素的时候，会得到不同的结果。
+
+    var a = ["a",,"b"];
+
+    function print(i) {
+        console.log(i);
+    }
+
+    a.forEach(print)
+    // a
+    // b
+
+    Array.apply(null,a).forEach(print)
+    // a
+    // undefined
+    // b
+
+    利用数组对象的slice方法，可以将一个类似数组的对象
+    （比如arguments对象）转为真正的数组。但被处理的对象必须有length属性,
+    以及相对应的数字键.
+
+    Array.prototype.slice.apply({0:1,length:1})
+    // [1]
+
+    Array.prototype.slice.apply({0:1})
+    // []
+
+    Array.prototype.slice.apply({0:1,length:2})
+    // [1, undefined]
+
+    Array.prototype.slice.apply({length:1})
+    // [undefined]
+</pre>
+
+<h3>bind方法</h3>
+<p>
+    bind 方法就是单纯了将函数体内的this绑定到某个对象,然后返回一个新函数,
+    它他call方法和apply方法更进一步的是,除了绑定this以外,还可以绑定原函数的参数.
+</p>
+<pre style="color: #008000">
+    var o1 = new Object();
+    o1.p = 123;
+    o1.m = function (){
+        console.log(this.p);
+    };
+
+    o1.m() // 123
+
+    var o2 = new Object();
+    o2.p = 456;
+    o2.m = o1.m;
+
+    o2.m() // 456
+
+    o2.m = o1.m.bind(o1);
+    o2.m() // 123
+</pre>
+<p>
+    上面代码使用bind方法将o1.m方法绑定到o1以后，在o2对象上调用o1.m的时候，o1.m函数体内部的this.p就不再到o2对象去寻找p属性的值了。
+
+</p>
+<p>
+    如果bind方法的第一个参数是null或undefined，等于将this绑定到全局对象，函数运行时this指向全局对象（在浏览器中为window）。
+
+</p>
+<pre style="color: #008000">
+    function add(x,y) { return x+y; }
+
+    var plus5 = add.bind(null, 5);
+
+    plus5(10) // 15
+</pre>
+
+
+
+
+
+
+
+
+
 
 
 
