@@ -5,7 +5,7 @@ description: JavaScript-继承
 keywords: JavaScript-继承
 ---
 <style>
-    pre{
+    .main-article pre{
         color: #008000;
         font-weight: bold;
     }
