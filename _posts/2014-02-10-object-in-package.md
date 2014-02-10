@@ -70,7 +70,7 @@ keywords: JavaScript,封装
         则返回undefined。
     </strong>
 </p>
-<section>
+<div>
     举例来说，如果让某个函数的prototype属性指向一个数组，
     就意味着该函数可以用作数组的构造函数，
     因为它生生成的实例对象都可以通过prototype属性调用数组方法。
@@ -101,12 +101,12 @@ keywords: JavaScript,封装
         至于最后那行instanceof表达式，我们知道instanceof运算符用来比较一个对象
         是否为某个构造函数的实例，最后一行表示mine为Array的实例
     </p>
-</section>
+</div>
 
 <h2>
     constructor属性
 </h2>
-<section>
+<div>
     <p>
         prototype对象有一个constructor属性，默认指向prototype对象所在的构造
         函数。可以被所有实例对象继承。
@@ -129,9 +129,9 @@ keywords: JavaScript,封装
         FOO.prototype.contructor === FOO;
         // true
     </pre>
-</section>
+</div>
 <h3>Object.getPrototypeOf方法</h3>
-<section>
+<div>
     <p>
         getPrototypeOf方法返回一个对象的原型。
     </p>
@@ -147,9 +147,9 @@ keywords: JavaScript,封装
         // true
 
     </pre>
-</section>
+</div>
 <h3>Object.create方法</h3>
-<section>
+<div>
     <p>
         Object对象的create方法用于生成新的对像。
         它接受一个原型对象作为参数，返回一个新对象，
@@ -206,7 +206,7 @@ keywords: JavaScript,封装
         console.log(o2.isPrototypeOf(o3));//true
         console.log(o1.isPrototypeOf(o1));//true
     </pre>
-</section>
+</div>
 
 
 
