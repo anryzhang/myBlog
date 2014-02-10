@@ -6,13 +6,7 @@ keywords: JavaScript-继承
 ---
 
 <section>
-    <style type="text/css">
-        .main-article pre{
-            color: #008000;
-            font-weight: bold;
-        }
-
-    </style>
+    
     <h2>\_\_proto\_\_属性</h2>
     <p>
         每个对象都 有一个内部属性\_\_proto\_\_,
