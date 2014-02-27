@@ -138,6 +138,48 @@ function Preson(){}
     console.log(p1.sayName === p2.sayName);//true
 </pre>
 
+<h3>
+    动态原型模式
+</h3>
+<p>
+    动态原型模式把所有信息都封装在了构造函数中,而非 通过 在通过在构造函数
+    中初始化原型(仅在必要的情况下),又保持 了同时使用构造函数各原型的优点.
+    换句话说,可以通过检查某个应该存在的方法是否有效,来决定 是否需要初始化原型.如下:
+</p>
+
+<pre>
+function Person(name,age,job){
+        this.name = name;
+        this.age = age;
+        this.job = job;
+        //方法
+        if(typeof this.sayName != 'function'){
+            Person.prototype.sayName = function(){
+                alert(this.name);
+            }
+        }
+    }
+
+    var friend = new Person('anry',27,'web');
+    friend.sayName();
+</pre>
+<p>
+    这里只在sayName()方法不存在的情况下,才会将它添加到原型中.
+    还可以使用instanceof操作符确定它的类型.但在使用动态原型模式时,不能使用对象
+    字面量重写原型,原因是如果在已经创建了实例的情况下重写原型,那么就会切断现有实例与新原型之间的联系.
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
