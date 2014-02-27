@@ -61,3 +61,48 @@ keywords: javascript,原型,动态性
     因为friend指向的原型中没有该名字的属性.
 </p>
 
+<h3>原生对象的原型</h3>
+<p>
+    所有的原生引用类型(Object,Array,String)都在其构造函数的原型上定义了方法.
+
+</p>
+<p>
+    通过原生对象的原型,不仅可以取得所有默认方法的引用,而且也可以定义新方法.
+    可以像修改自定义对象的原型一样修改原生对象的原型,因此可以随时添加方法,如:
+    给基本包装类型String添加一个名这startsWith()方法
+</p>
+<pre>
+    <code>
+        String.prototype.startsWith = function(text){
+            return this.indexOf(text) == 0;
+        }
+        var msg = 'hello world!';
+        alert(msg.startsWith('he'));
+        //true
+
+    </code>
+</pre>
+
+<h3>原型对象的问题</h3>
+<p>
+    原型中所有属性是被很多实例共享的,这种共享对于函数很合适,然而.
+    对于包含引用类型的属性来说,问题就比较突出.如下例子:
+</p>
+<pre>
+    <code>
+        
+    </code>
+</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
