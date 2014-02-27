@@ -5,15 +5,6 @@ description: 原型中查找的过程是一次搜索,因此对原型对象所做
 keywords: javascript,原型,动态性
 ---
 
-<div>
-    <style type="text/css">
-        .main-article pre{
-            color: #008000;
-            font-weight: bold;
-        }
-
-    </style>
-</div>
 <p>
     原型中查找的过程是一次搜索,
     因此对原型对象所做的任何修改都能够从实例上反映出来.
@@ -69,3 +60,13 @@ keywords: javascript,原型,动态性
     然后在调用friend.sayHi()时,name没有找.而friend.sayName()时出错误了.
     因为friend指向的原型中没有该名字的属性.
 </p>
+
+<div>
+    <style type="text/css">
+        .main-article pre{
+            color: #008000;
+            font-weight: bold;
+        }
+
+    </style>
+</div>
