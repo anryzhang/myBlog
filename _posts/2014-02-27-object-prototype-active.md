@@ -72,7 +72,6 @@ keywords: javascript,原型,动态性
     给基本包装类型String添加一个名这startsWith()方法
 </p>
 <pre>
-    <code>
         String.prototype.startsWith = function(text){
             return this.indexOf(text) == 0;
         }
@@ -80,7 +79,6 @@ keywords: javascript,原型,动态性
         alert(msg.startsWith('he'));
         //true
 
-    </code>
 </pre>
 
 <h3>原型对象的问题</h3>
@@ -89,12 +87,56 @@ keywords: javascript,原型,动态性
     对于包含引用类型的属性来说,问题就比较突出.如下例子:
 </p>
 <pre>
-    <code>
-        
-    </code>
+function Preson(){}
+    Preson.prototype={
+        constructor:Preson,
+        name:'anry',
+        age:27,
+        job:'web',
+        friends:['coco','keke'],
+        sayName:function(){
+            alert(this.name);
+        }
+    };
+    var p1 = new Preson();
+    var p2 = new Preson();
+    p1.friends.push('test');
+    console.log(p1.friends);//["coco", "keke", "test"]
+    console.log(p2.friends);//["coco", "keke", "test"]
+    console.log(p1.friends == p2.friends);//true
 </pre>
+<p>如果p1,p2都是各有自己的friends,那上面的代码就有问题了.所以很少有人单独使用原型模式.</p>
+<h3>组合使用构造函数模式和原型模式</h3>
+<p>
+    创建自定议类型的最常见方式,就是组合使用构造函数模式与原型模式.
+    <strong>
+        构造函数模式用于定义实例属性,原型模式用于定义方法与共享属性.
+    </strong>
+    这种混合模式还支持向构造函数传递参数:如下:
+</p>
+<pre>
+    function Person(name,age,job){
+        this.name = name;
+        this.age = age;
+        this.job = job;
+        this.friends = ['co','ke'];
+    }
 
+    Person.prototype = {
+        constructor: Person,
+        sayName:function(){
+            alert(this.name);
+        }
+    };
 
+    var p1 = new Person('anry',29,'web');
+    var p2 = new Person('test',23,'test');
+    p1.friends.push('vi');
+    console.log(p1.friends);//["co", "ke", "vi"]
+    console.log(p2.friends);//["co", "ke"]
+    console.log(p1.friends === p2.friends);//false
+    console.log(p1.sayName === p2.sayName);//true
+</pre>
 
 
 
