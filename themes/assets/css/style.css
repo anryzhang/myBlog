@@ -211,6 +211,10 @@ a:hover {
     height: auto;
     background: #f6f6f6;
 }
+.main-article pre{
+    color: #008000;
+    font-weight: bold;
+}
 .main-article:nth-child(2n) {
     background: #fff;
 }
