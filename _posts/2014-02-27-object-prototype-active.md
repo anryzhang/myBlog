@@ -53,7 +53,7 @@ keywords: javascript,原型,动态性
         }
     };
     friend.sayName();
-    //Uncaught TypeError: Object #&gt;Person&lt; has no method 'sayName'
+    //Uncaught TypeError: Object #&lt;Person&gt; has no method 'sayName'
 </pre>
 <p>
     在上例子中,我们先创建了Person的一个实例,然后又重写了其原型对象.
@@ -194,7 +194,18 @@ function Person(name,age,job){
     构造函数在不返回值 的情况下,默认会返回新对象实例.而通过在构造函数的未尾添加一个
     return语句,可以重定调用构造函数时返回的值.
 </p>
+<p>
+    关于寄生构造函数模式,返回的对象与构造函数或者与构造函数的原型
+    属性之间没有关系,也就是说,构造函数返回的对象 与在构造函数外部创建
+    的对象没有什么不同,不能依赖instanceof操作符来确定对象类型.因此,
+    不建议使用这种模式.
+</p>
+<h3>稳妥构造函数模式</h3>
+<p>
+    所谓稳妥对象,指的是没有公共属性,而且其方法也不引用this的对象.稳妥对象
+    最适合在一些安全环境中或者在防止数据库被人其他应用程序改动时使用.
 
+</p>
 
 
 
