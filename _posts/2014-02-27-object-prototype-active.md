@@ -174,7 +174,26 @@ function Person(name,age,job){
     寄生构造函数模式的基本思想是创建一个函数,用来封装创建对象的代码,然后返回新创建的对象 .
 </p>
 
+<pre>
+    function Person(name,age,job){
+        var o = new Object();
+        o.name = name;
+        o.age = age;
+        o.job = job;
+        o.sayName = function(){
+            alert(this.name);
+        };
+        return o;
+    }
 
+    var friend = new Person('anry',27,'web');
+    friend.sayName();
+</pre>
+<p>
+    除了使用new操作符并把使用的包装函数叫做构造函数之外,这个模式跟工厂模式其实是一模 一样的.
+    构造函数在不返回值 的情况下,默认会返回新对象实例.而通过在构造函数的未尾添加一个
+    return语句,可以重定调用构造函数时返回的值.
+</p>
 
 
 
