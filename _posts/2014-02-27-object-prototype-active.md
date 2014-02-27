@@ -204,9 +204,24 @@ function Person(name,age,job){
 <p>
     所谓稳妥对象,指的是没有公共属性,而且其方法也不引用this的对象.稳妥对象
     最适合在一些安全环境中或者在防止数据库被人其他应用程序改动时使用.
-
+    如下:
 </p>
-
+<pre>
+    function Person(name,age,job){
+        var o = new Object();
+        o.sayName = function(){
+            alert(name);
+        };
+        return o;
+    }
+    var friend = Person('anry',27,'web');
+    friend.sayName();
+    //anry
+</pre>
+<p>
+    注意:在以这种模式创建的对象中,除了使用sanName()方法之外,没有其它办法访问name的值.
+    
+</p>
 
 
 
