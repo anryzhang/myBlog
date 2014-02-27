@@ -61,12 +61,3 @@ keywords: javascript,原型,动态性
     因为friend指向的原型中没有该名字的属性.
 </p>
 
-<div>
-    <style type="text/css">
-        .main-article pre{
-            color: #008000;
-            font-weight: bold;
-        }
-
-    </style>
-</div>
