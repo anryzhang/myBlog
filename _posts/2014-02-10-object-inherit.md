@@ -2,8 +2,39 @@
 layout: post
 title: JavaScript-继承
 description: JavaScript-继承
-keywords: JavaScript-继承
+keywords: JavaScript-继承,原型链
 ---
+<h2>原型链</h2>
+<p>
+    原型链是JS继承的主要方法,利用原型让
+    一个引用类型继承另一个引用类型的属性和方法.<br/>
+    构造函数,原型,实例的关系:
+    第个构造函数都有珍上原型对象(prototype),原型对象都包含一个
+    指向构造函数的指针,而实例都包含一个指向原型对象的内部指针.如下:
+
+</p>
+<pre>
+    function SuperType(){
+        this.property = true;
+    }
+    SuperType.prototype.getSuperValue = function(){
+        return this.property;
+    };
+
+    function SubType(){
+        this.subproperty = false;
+    }
+    //继承了SuperType
+    SubType.prototype = new SuperType();
+    SubType.prototype.getSubValue = function(){
+        return this.subproperty;
+    };
+    var instance = new SubType();
+    alert(instance.getSuperValue());//true;
+</pre>
+
+
+
 
 <h2>__proto__属性</h2>
 <div>

@@ -220,7 +220,7 @@ function Person(name,age,job){
 </pre>
 <p>
     注意:在以这种模式创建的对象中,除了使用sanName()方法之外,没有其它办法访问name的值.
-    
+
 </p>
 
 
