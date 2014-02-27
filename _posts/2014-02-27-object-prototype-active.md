@@ -5,13 +5,15 @@ description: 原型中查找的过程是一次搜索,因此对原型对象所做
 keywords: javascript,原型,动态性
 ---
 
-<style type="text/css">
-    .main-article pre{
-        color: #008000;
-        font-weight: bold;
-    }
+<div>
+    <style type="text/css">
+        .main-article pre{
+            color: #008000;
+            font-weight: bold;
+        }
 
-</style>
+    </style>
+</div>
 <p>
     原型中查找的过程是一次搜索,
     因此对原型对象所做的任何修改都能够从实例上反映出来.
@@ -40,7 +42,7 @@ keywords: javascript,原型,动态性
     情况下,会继续搜索原型,因实例与原型之间只不过是一个指针,因此可以在原型中找到新的
     sayHi属性并返回保存在那里的函数.
     <strong>
-        实例中的指针公指向原型,而不指向构造函数.
+        实例中的指针仅指向原型,而不指向构造函数.
     </strong>
 </p>
 <pre>
@@ -62,3 +64,8 @@ keywords: javascript,原型,动态性
     friend.sayName();
     //Uncaught TypeError: Object #&gt;Person&lt; has no method 'sayName'
 </pre>
+<p>
+    在上例子中,我们先创建了Person的一个实例,然后又重写了其原型对象.
+    然后在调用friend.sayHi()时,name没有找.而friend.sayName()时出错误了.
+    因为friend指向的原型中没有该名字的属性.
+</p>
