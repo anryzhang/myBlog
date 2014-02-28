@@ -32,7 +32,30 @@ keywords: JavaScript-继承,原型链
     var instance = new SubType();
     alert(instance.getSuperValue());//true;
 </pre>
+<p>
+    上面代码定义了两个类型:SuperType和SubType.SubType继承了SuperType,
+    而继承是通过创建SuperType的实例,并奖该实例赋给SubType.prototype实现的.
+    <strong>实现的本质是重写原型对象,代之以一个新类型的实例
+    .原来存在于SuperType的实例中的所有属性和方法,现在也存在于SubType.prototype中.</strong>
+    新原型不仅具有作为一个SuperType的实例所拥有的全部属性和方法,而且其 内部还有一个指针,指向了
+    SuperType的原型.
+</p>
 
+<p>
+    instance指向SubType的原型,SubType的原型又指向SuperType的原型.getSuperValue()方法仍然还在
+    SuperType.prototype中,但property则位于SubType.prototype中.这是因为
+    property是一个实例属性,而getSuperValue()则是一个原型方法.
+    即然SubType.prototype现在是SuperType的实例,那么property当然就位于该实例中了.
+    <strong>
+        instance.constructor现在指向的是SuperType,这是因为原来SubType.prototype中的
+        constructor被重写了的缘故.
+    </strong>
+</p>
+<p>
+    通过原型链实现继承的情况下,搜索过程就得以沿着原型链继续向上.上面的例子来说,调用
+    instance.getSuperValue()会经历三个搜索步骤:1>搜索实例;2>搜索SubType.prototype;3>搜索SuperType.prototype,最
+    后一步才会找到该方法.
+</p>
 
 
 
