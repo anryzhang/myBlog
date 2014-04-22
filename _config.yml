@@ -6,7 +6,7 @@ safe: false
 
 #站点基础配置
 title: diy1818
-subTitle: my blog.
+subTitle: Good children, Constantly learning, Constantly growing.
 description: 基于 Jekyll 搭建起来的博客。
 url: http://anryzhang.github.io/myBlog
 feed: myBlog/atom.xml

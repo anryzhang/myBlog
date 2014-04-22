@@ -155,8 +155,9 @@ a:hover {
     color: rgba(0, 0, 0, 0.8);
 }
 .subtitle {
-    line-height: 32px;
+    line-height: 22px;
     font-size: 16px;
+    width: 160px;
     color: rgba(255,255,255,0.4);
     font-family: Georgia, "Times New Roman", "Hiragino Mincho Pro", "Songti SC", "SimSun", sans-serif;
     font-style: italic;
@@ -211,6 +212,7 @@ a:hover {
     height: auto;
     background: #f6f6f6;
 }
+
 .main-article:nth-child(2n) {
     background: #fff;
 }
@@ -419,12 +421,14 @@ a:hover {
     padding: 13px 20px;
     background-color: #F4F4F6;
     clear: both;
-    color: #22272A;
+   /* color: #22272A;*/
     overflow: auto;
     font: 14px/22px Consolas, "Courier New", Courier, monospace;
     -webkit-border-radius: 2px;
        -moz-border-radius: 2px;
             border-radius: 2px;
+    color: #008000;
+    font-weight: bold;
 }
 .main-article code {
     background: #f6f6f6;

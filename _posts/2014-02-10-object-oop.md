@@ -9,7 +9,7 @@ keywords: javascript 面向对象编程
  <p>当实物抽象成"对象",实物之间的关系 就变成了"对象"之间的关系</p>
 <h2>对象是一个模型,封装了"属性"(property)和"方法"(method)</h2>
 <p>所谓"属性"就是对象的状态,所谓"方法"就是对象的行为</p>
-<h2>类各构造函数</h2>
+<h2>类和构造函数</h2>
 <p>面向对象就是要生成对象,生成对象就需要一个模板,用来表示某一类实物的共同特征,然后"对象"根据这个模板生成实例."类"就是对象 的模板,对象就是"类"的实例.</p>
 <p>javascript没有"类",只有用构造函数(constructor)作为对象的模板.构造函数的最大特点就是函数体内使用了this关键字,代表了所要生成的对象实例.生成对象 的时候,必需用new命令,调用 构造函数.</p>
 <p>用构造函数生成一个对象实例后, 构造函数内部的this代表被生成的实例对象.</p>
@@ -23,6 +23,26 @@ keywords: javascript 面向对象编程
     //实例化对象
     var v = new con_obj();
     console.log(v.speed);//100
+</pre>
+<p>更简单的原型语法</p>
+<pre style="color: #008000">
+    function Person(){}
+    Person.prototype={
+        name:'anry',
+        age:27,
+        job:"web",
+        sayName:function(){
+            alert(this.name);
+        }
+    };
+
+    var key = Object.keys(Person.prototype);
+    alert(key);
+    var p1 = new Person();
+    p1.name = 'coco';
+    p1.age= 23;
+    var p1key = Object.keys(p1);
+    alert(p1key);
 </pre>
 <p>注意:如果不使用new而直接调用构造函数,this代表的是全局对象,构造函数就变成了普通函数,并不会生成实例对象.</p>
 
