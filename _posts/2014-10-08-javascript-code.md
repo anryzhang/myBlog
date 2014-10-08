@@ -36,7 +36,30 @@ keywords: javascript,函数,表达示,对像,类型.
      面向人类的理性事物.
  </p>
 
+<h3>javascript 函数就是对象的本质</h3>
+<pre>
+    <script>
+        function sing(){
+            console.log(sing.author + ":" + sing.poem);
+        }
 
+        sing.author = 'lb';
+        sing.poem = "汉家秦地月,流影照明妃,一上玉关道,天涯去不归...";
+        sing();
+
+        sing.author = 'dd';
+        sing.poem = '日出汉家天,月落阴山前,女儿琵琶怨,已唱三千年...';
+        sing();
+    </script>
+</pre>
+
+<strong>
+    对象的自我意识
+</strong>
+<p>
+    对象将世界划分为内外两部分.
+    有一个人,在对象树下,整整想了九九八十一天,终于悟出了生命的痛苦来自于欲望,但究其欲望的根源是来自于自我意识.
+</p>
 
 
 
