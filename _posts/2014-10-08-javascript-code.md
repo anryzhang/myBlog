@@ -38,7 +38,7 @@ keywords: javascript,函数,表达示,对像,类型.
 
 <h3>javascript 函数就是对象的本质</h3>
 <pre>
-    <script>
+
         function sing(){
             console.log(sing.author + ":" + sing.poem);
         }
@@ -50,7 +50,7 @@ keywords: javascript,函数,表达示,对像,类型.
         sing.author = 'dd';
         sing.poem = '日出汉家天,月落阴山前,女儿琵琶怨,已唱三千年...';
         sing();
-    </script>
+
 </pre>
 
 <strong>
