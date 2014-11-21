@@ -9,8 +9,7 @@ keywords: 右键菜单,ContextMenuHandlers.
 <div class="entry-content clearfix">
     <h2>ContextMenuHandlers</h2>
 
-    <pre>
-        <style type="text/css">
+            <pre class=" language-bash">
             #container {
                 text-align : center;
                 width : 500px;
@@ -35,8 +34,9 @@ keywords: 右键菜单,ContextMenuHandlers.
             div.menuitems:hover {
                 background-color : #c0c0c0;
             }
-        </style>
-        <script>
+            </pre>
+            <pre class=" language-bash">
+
             window.onload = function() {
 
                 var EventHandler = (function(){
@@ -90,9 +90,9 @@ keywords: 右键菜单,ContextMenuHandlers.
                 EventHandler.addListener(container,"contextmenu",showMenu);
                 EventHandler.addListener(document,"click",hideMenu);
             }
+            </pre>
 
-        </script>
-
+        <pre class=" language-bash">
 
         <div id="menu" class="skin">
             <div class="menuitems">
