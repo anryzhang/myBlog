@@ -9,7 +9,7 @@ keywords: 右键菜单,ContextMenuHandlers.
 <div class="entry-content clearfix">
     <h2>ContextMenuHandlers</h2>
 
-    <code>
+    <pre>
         <style type="text/css">
             #container {
                 text-align : center;
@@ -133,6 +133,6 @@ keywords: 右键菜单,ContextMenuHandlers.
         <div id="container">
             <p>右键此区域</p>
         </div>
-    </code>
+    </pre>
 
 </div>
