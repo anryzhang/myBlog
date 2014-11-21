@@ -94,45 +94,19 @@ keywords: 右键菜单,ContextMenuHandlers.
 
         <pre class=" language-bash">
 
-        <div id="menu" class="skin">
-            <div class="menuitems">
-                <a href="javascript:history.back();">后退</a>
-            </div>
-            <div class="menuitems">
-                <a href="javascript:history.back();">前进</a>
-            </div>
-            <hr>
-            <div class="menuitems">
-                <a href="http://api.51ditu.com/" target="_blank">地图api</a>
-            </div>
-            <div class="menuitems">
-                <a href="http://www.51ditu.com/traffic/index.html" target="_blank">实时交通</a>
-            </div>
-            <div class="menuitems">
-                <a href="http://www.51ditu.com" target="_blank">地图搜索</a>
-            </div>
-            <div class="menuitems">
-                <a href="http://nav.51ditu.com" target="_blank">驾驶导航</a>
-            </div>
-            <hr>
-            <div class="menuitems">
-                <a href="http://uu.51ditu.com" target="_blank">灵图UU</a>
-            </div>
-            <div class="menuitems">
-                <a href="http://lushu.51ditu.com" target="_blank">路书下载</a>
-            </div>
-            <hr>
-            <div class="menuitems">
-                <a href="http://www.lingtu.com" target="_blank">关于本站</a>
-            </div>
-            <div class="menuitems">
-                <a href="http://emap.51ditu.com/link/link.html" target="_bland">友情链接</a>
-            </div>
-        </div>
+        &lt;div id="menu" class="skin"&gt;
+            &lt;div class="menuitems"&gt;
+                &lt;a href="javascript:history.back();">后退 &lt;/a&gt;
+            &lt;/div>
+            &lt;div class="menuitems"&gt;
+                &lt;a href="javascript:history.back();">前进 &lt;/a&gt;
+            &lt;/div&gt;
 
-        <div id="container">
-            <p>右键此区域</p>
-        </div>
+        &lt;/div&gt;
+
+         &lt;div id="container"&gt;
+             &lt;p&gt;右键此区域 &lt;/p&gt;
+                    &lt;/div&gt;
     </pre>
 
 </div>
