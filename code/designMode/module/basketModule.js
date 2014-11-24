@@ -1,7 +1,7 @@
 /**
  * Created by DELL on 2014/11/24.
  */
-var basketModule = (function(){
+var basketModule = ((function(_){
     var basket = [];
     function _doSomethingPrivate(){
         console.log(basket);
@@ -23,4 +23,4 @@ var basketModule = (function(){
             return total;
         }
     }
-})();
+})(_));
