@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<style>
+    ul,ol,li{
+        margin: 0;
+        padding: 0;
+    }
+    .box{
+        width: 600px;
+        height: 200px;
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 20px;
+    }
+    .box ul li{
+        display: none;
+        width: 600px;
+        height: 200px;
+        overflow: hidden;
+        background: #ccc;
+        font-size: 88px;
+        color: #fff;
+    }
+    .box ol{
+        display: block;
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        width: 125px;
+        overflow: hidden;
+    }
+    .box ol li{
+        display: block;
+        float: left;
+        width: 20px;
+        height: 20px;
+        margin-left: 5px;
+        text-align: center;
+        line-height: 20px;
+        background: #000;
+        color: #fff;
+        cursor: pointer;
+    }
+    .box ol li.active{
+        background: #d01d33;
+
+    }
+
+</style>
+<div id="J_box" class="box">
+    <ul>
+        <li style="display: block;">01</li>
+        <li>02</li>
+        <li>03</li>
+        <li>04</li>
+        <li>05</li>
+    </ul>
+    <ol>
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ol>
+</div>
+<div id="J_box2" class="box">
+    <ul>
+        <li style="display: block;">01</li>
+        <li>02</li>
+        <li>03</li>
+        <li>04</li>
+        <li>05</li>
+    </ul>
+    <ol>
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ol>
+</div>
+
+<script>
+    (function(){
+        function carousel(ele) {
+                var self = this;
+                self.J_box = document.getElementById(ele);
+                self.oUl = self.J_box.getElementsByTagName('ul')[0];
+                self.oLiUl = self.oUl.getElementsByTagName('li');
+                self.oOl = self.J_box.getElementsByTagName('ol')[0];
+                self.oLiOl = self.oOl.getElementsByTagName('li');
+                self.eventHanding();
+
+        };
+        carousel.constructor = carousel;
+        carousel.prototype.eventHanding = function(){
+            var self = this;
+            for(var i = 0; i < self.oLiOl.length; i++){
+                self.oLiOl[i].index = i;
+                self.oLiOl[i].onmouseover = function(e){
+                    for(var j = 0; j < self.oLiOl.length; j++){
+                        self.oLiOl[j].className = '';
+                        self.oLiUl[j].style.display = 'none';
+                    }
+                    this.className = 'active';
+                    self.oLiUl[this.index].style.display = 'block';
+                    self.getIndex(this.index + 1);
+                }
+            }
+        }
+        carousel.prototype.getIndex = function(index){
+
+            return index;
+        }
+
+        window.onload = function(){
+           var  c1 = new carousel('J_box');
+
+            var c2 = new carousel('J_box2');
+        }
+    })();
+</script>
+</body>
+</html>
