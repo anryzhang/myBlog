@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<progress></progress>
+<span id="out"></span>
+<button onclick="down()">开始加载</button>
+<script>
+    function down(){
+        var out = document.querySelector('#out');
+        var xh = new XMLHttpRequest();
+        xh.open('get','test.json',true);
+        xh.onprogress = function(evt){
+            console.log(evt);
+            if(evt.lengthComputable){
+                var pencent = parseInt((evt.loaded / evt.total)*100);
+                out.innerHTML = pencent + '100%'
+            }
+        }
+        xh.onreadystatechange = function(){
+            if(xh.readyState == 4){
+                out.innerHTML = '已经下载完成';
+            }
+        }
+        xh.send();
+    }
+</script>
+</body>
+</html>
