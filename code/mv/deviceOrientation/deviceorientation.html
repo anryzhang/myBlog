@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<style>
+    .test{
+        position: absolute;
+        top:50%;
+        left: 50%;
+        width: 20%;
+        height: 10%;
+        margin-left: -10%;
+        margin-top: -5%;
+        background: #000;
+        color: #fff;
+        font-size: 20px;
+        text-align: center;
+    }
+</style>
+<div class="J_test test">
+    test
+</div>
+<script>
+    window.addEventListener('deviceorientation',function(event){
+        switch(window.orientation){
+            case 90:case-90:
+                orientation = '横屏';
+                break;
+            default :
+                orientation = '竖屏';
+        }
+
+    },true);
+
+    window.addEventListener('orientationchange',function(e){
+        alert(e);
+    })
+
+    document.querySelector('.J_test').addEventListener('touchstart',function(e){
+        alert(JSON.parse(e));
+    })
+</script>
+</body>
+</html>
