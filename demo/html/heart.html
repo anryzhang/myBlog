@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>心跳动画</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+</head>
+<body>
+<style>
+    .heart img{
+        display: block;
+        width: 300px;
+        height: 300px;
+        margin:100px auto 0;
+        animation: pound 0.3s infinite;
+    }
+    .heart{
+        position: relative;
+
+    }
+    .heart .heart-text{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        color: #fff;
+        font-size: 30px;
+        text-align: center;
+        margin-left: -124px;
+        margin-top: -10px;
+        -webkit-animation: pound 0.3s infinite;
+        -o-animation: pound 0.3s infinite;
+        animation: pound 0.3s infinite;
+    }
+    @keyframes pound {
+        from{
+            fransform: none;
+        }
+        to{
+            transform: scale(1.2);
+        }
+    }
+</style>
+<div class="heart">
+    <img src="heart.png" alt=""/>
+    <div class="heart-text">前任是个坑，爱呢？</div>
+</div>
+</body>
+</html>
