@@ -12,10 +12,10 @@ $(document).ready(function() {
             linkBottom: "110px",
             linkRight: "1em",
             _scrollTop: function() {
-            if(jQuery.scrollTo) {
-                jQuery.scrollTo(0, 800, {queue:true});
-            }
-        },
+                if(jQuery.scrollTo) {
+                    jQuery.scrollTo(0, 800, {queue:true});
+                }
+            },
         _scrollScreen: function() {
             var that = this, topLink = $('#' + that.nodeName);
 
