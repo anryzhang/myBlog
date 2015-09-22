@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>类型检测</title>
+</head>
+<body>
+<script>
+    var Type = (function() {
+        var Type = function() {
+            if (!this instanceof Type) {
+                return new Type();
+            }
+        };
+
+        var menth = {
+            version: 'v1.0',
+            getType: function(ele) {
+                if (window == document && document != window) {
+                    return 'window';
+                } else if (ele.nodeType === 9) {
+                    return 'document';
+                } else if (ele.callee) {
+                    return 'arguments';
+                } else if (isFinite(ele.length) && ele.item) {
+                    return 'NodeList';
+                } else {
+                    var type = Object.prototype.toString.call(ele),
+                            reg = /\[object (.*)\]/,
+                            arr = reg.exec(type);
+                    return arr[1];
+                }
+            },
+            isArray : function(ele){
+                return (this.getType(ele) === 'Array') ? true : false;
+            },
+            isFunction : function(ele){
+                return (this.getType(ele) === 'Function') ? true : false;
+            },
+            isObject : function(ele){
+                return (this.getType(ele) === 'Object') ? true : false;
+            },
+            isString : function(ele){
+                return (this.getType(ele) === 'String') ? true : false;
+            },
+            isNumber : function(ele){
+                return (this.getType(ele) === 'Number') ? true : false;
+            },
+            isBoolen : function(ele){
+                return (this.getType(ele) === 'Boolean') ? true : false;
+            },
+            isUndefined : function(ele){
+                return (this.getType(ele) === 'Undefined') ? true : false;
+            },
+            isNull : function(ele){
+                return (this.getType(ele) === 'Null') ? true : false;
+            }
+        }
+        Type = extendDeep(Type.prototype,menth);
+
+
+
+        // 扩展工具
+        function extendDeep() {
+            var i,
+                    target = arguments[0] || {},
+                    astr = '[object Array]',
+                    toStr = Object.prototype.toString,
+                    yArr = Array.prototype.slice.call(arguments, 1);
+            for (i = 0, len = yArr.length; i < len; i++) {
+                var temp = yArr[i];
+                for (var j in temp) {
+                    if (target.hasOwnProperty(j) && (target[i] === temp[i])) {
+                        continue;
+                    }
+                    if (temp.hasOwnProperty(j)) {
+                        if (typeof temp[j] === 'object') {
+                            target[j] = (toStr.call(temp[j] === astr)) ? [] : {};
+                            extendDeep(target[j], temp[j]);
+                        } else {
+                            if (typeof temp[j] !== 'undefined') {
+                                target[j] = temp[j];
+                            }
+                        }
+                    }
+                }
+            }
+
+            return target;
+        }
+        console.log(Type)
+        return Type;
+    })();
+</script>
+</body>
+</html>
