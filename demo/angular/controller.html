@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据的双向绑定</title>
+</head>
+<body >
+<div ng-app="myFirstApp">
+    <div ng-controller="firstController">
+        <input class="J_t1" id="J_t1" type="text" ng-model="name"/>
+        {{name}}
+        <input type="text" ng-model="age">
+        {{age}}
+        <div class="">
+            {{fullName()}}
+        </div>
+    </div>
+    <div ng-controller="twoController">
+        <input type="text" ng-model="name">
+        {{name}}
+
+    </div>
+</div>
+
+
+
+
+
+<script src="../../code/bower_components/angular/angular.js"></script>
+<script>
+    (function(){
+        var app = angular.module('myFirstApp',[]);
+        app.controller('firstController',function($scope){
+            $scope.name = 'test';
+            $scope.age = 27;
+            var a = document.getElementById('J_t1');
+            var ele = angular.element(a);
+            console.log(ele);
+
+            $scope.fullName = function(){
+                return $scope.name + $scope.age;
+            }
+
+        });
+
+        app.controller('twoController',function($scope){
+            $scope.name = 'test2';
+        });
+
+        //var TwoApp = angular.module('myTwoApp',[]);
+        /*var TwoApp = angular.bootstrap(angular.element('#A2'),['A2']);
+        TwoApp.controller('twoController',function($scope){
+           $scope.name = 'two';
+        });*/
+
+    })();
+</script>
+</body>
+</html>

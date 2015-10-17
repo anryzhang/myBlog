@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var mySingModule = (function(){
+        var instance;
+        function init(){
+            function privateMethod(){
+                console.log('我是一个私有的方法或变量');
+            }
+            var privateVariable = "我也是一个私有的变量";
+            var privateRandowNumber = Math.random();
+
+            return {
+                publicMethod:function(){
+                    console.log('公有方法');
+                },
+                publicProperty:'公有变量',
+                getRandomNumber:function(){
+                    return privateRandowNumber;
+                }
+            };
+        }
+
+        return {
+            getInstance:function(){
+                if(!instance){
+                    instance = init();
+                }
+                return instance;
+            }
+        };
+    })();
+
+
+</script>
+</body>
+</html>
