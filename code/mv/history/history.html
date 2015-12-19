@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax history</title>
+</head>
+<body>
+<style>
+    nav{
+
+    }
+    nav span{
+        display: inline-block;
+        padding: 0 15px;
+
+    }
+    .active{
+        background: #000;
+        color: #fff;
+    }
+</style>
+<nav>
+    <span id="home" class="active" onclick="getHome()">首页</span>
+    <span id="center"  onclick="getCenter()">个人中心</span>
+    <div id="content"></div>
+</nav>
+<script>
+    function getHome(){
+        setNavClass('home');
+        history.pushState({"data":"home","name":"home"},"home","?home");
+    }
+
+    function getCenter(){
+        history.pushState({"data":"center","name":"center"},"center","?center");
+        setNavClass('center');
+    }
+
+    function setNavClass(className){
+        var nav = document.querySelectorAll('nav span');
+        for(var i = 0; i < nav.length; i++){
+            nav[i].setAttribute('class','');
+
+        }
+        document.querySelector('#' + className).setAttribute('class','active');
+    }
+
+    window.onpopstate = function(e){
+        if(e.state){
+            var name = e.state.name;
+            var data = e.state.data;
+            document.querySelector("#content").innerHTML = data;
+            setNavClass(name);
+        }
+    }
+    getHome();
+
+
+</script>
+</body>
+</html>

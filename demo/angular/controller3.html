@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据的双向绑定</title>
+</head>
+<body >
+
+<div ng-app="myApp" >
+    <ul ng-controller="nameCtrl">
+        <li ng-repeat="x in names" ng-bind="x.name + ',' + x.country">
+
+        </li>
+    </ul>
+    <ul ng-controller="nameCtrl2">
+        <li ng-repeat="x in names" ng-bind="x.name + ':' + x.job"></li>
+    </ul>
+</div>
+
+
+
+<script src="../../code/bower_components/angular/angular.js"></script>
+<script src="controller3.js"></script>
+</body>
+</html>

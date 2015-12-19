@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    /*
+    * Dojo提供了一个方便的方法 dojo.setObject() 来设置对象。这需要将以"."符号为第一个参数的分隔符，如：myObj.parent.child 是指定义
+     在"myOjb"内部的一个对象“parent”，它的一个属性为"child"。使用setObject()方法允许我们设置children 的值，可以创建路径传递过程中的任何
+     对象即使这些它们根本不存在。
+     例如，如果我们声明商店命名空间的对象basket.coreas，可以实现使用传统的方式如下：
+    * */
+    var store = window.store || {};
+    if(!store['basket']){
+        store.basket = {};
+    }
+
+    if(!store.basket['core']){
+        store.basket.core = {};
+    }
+</script>
+
+</body>
+</html>
