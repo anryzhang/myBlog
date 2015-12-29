@@ -2,6 +2,7 @@
  * Created by anry on 2015/12/18.
  */
 var gulp = require('gulp'),
+    gutil = require('gulp-util'),
     minifycss = require('gulp-minify-css'),
     autoprefixer = require('gulp-autoprefixer'),
     uglify = require('gulp-uglify'),
@@ -11,7 +12,9 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
-    notify = require('gulp-notify')
+    notify = require('gulp-notify'),
+    less = require('gulp-less'),
+    path = require('path')
     ;
 var version = 151217
 var dir = 'test';
@@ -26,28 +29,47 @@ gulp.task('clean',function(){
 })
 
 
-gulp.task('script',function(){
+gulp.task('js',function(){
     //gulp.src('js/**/*.js')
     gulp.src([paths.src + 'js/t.js',
             paths.src + 'js/t2.js'])
-        //.pipe(uglify())
         .pipe(concat('/js/all.js'))
         .pipe(gulp.dest(paths.dest))
-        .pipe(rename('/js/all.min.js'))
         .pipe(uglify())
+        .pipe(rename('/js/all.min.js'))
         .pipe(gulp.dest(paths.dest));
+
+    gulp.src([paths.src + 'js/t.js'])
+        .pipe(concat('/js/t.js'))
+        .pipe(gulp.dest(paths.dest))
+        .pipe(uglify())
+        .pipe(rename('/js/t.min.js'))
+        .pipe(gulp.dest(paths.dest));
+
+    gutil.log('123');
+});
+
+gulp.task('less',function(){
+   gulp.src(paths.src + 'css/less/**/*.less')
+       .pipe(less({
+           paths:[path.join(__dirname,'less','includes')]
+       }))
+       .pipe(gulp.dest(paths.dest + '/css'))
+    gutil.log(__dirname)
 });
 
 gulp.task('css',function(){
     gulp.src([paths.src + 'css/t1.css'])
         .pipe(concat('/css/all.css'))
         .pipe(gulp.dest(paths.dest))
-        .pipe(rename('/css/all.min.css'))
         .pipe(minifycss())
-        .pipe(gulp.dest(paths.dest))
-        .pipe(notify({
-            message:'styles task complete'
-        }));
+        .pipe(rename({
+            extname:'.min.css'
+        }))
+        .pipe(gulp.dest(paths.dest));
+        //.pipe(notify({
+        //    message:'styles task complete'
+        //}));
 
 })
 
@@ -65,7 +87,7 @@ gulp.task('images',function(){
 
 
 gulp.task('watch',function(){
-    gulp.watch(paths.src +'js/**/*.js',['script']);
+    gulp.watch(paths.src +'js/**/*.js',['js']);
     gulp.watch(paths.src + 'css/**/*.css',['css']);
     gulp.watch(paths.src + 'images/**/*',['images']);
 
@@ -77,4 +99,4 @@ gulp.task('watch',function(){
 })
 
 
-gulp.task('default',['clean','script','css','images']);
+gulp.task('default',['clean','js','css','images']);
