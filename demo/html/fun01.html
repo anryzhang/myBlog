@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function arg(){
+        var sum =0;
+        for(var i = 0, len = arguments.length; i < len; i++){
+            sum += arguments[i];
+        }
+        var obj = sum/arguments.length;
+        console.log(obj);
+        return obj;
+    }
+
+    arg(1,2,3,4);
+
+    var a = [1,2,3,4];
+    arg.apply(null,a);
+
+</script>
+</body>
+</html>
