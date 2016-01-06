@@ -1,3 +1,10 @@
+body {
+  margin: 0;
+}
+body div {
+  line-height: 0;
+}
+
 ul {
   margin: 0;
   padding: 0;

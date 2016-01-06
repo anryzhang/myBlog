@@ -53,14 +53,14 @@ gulp.task('js',function(){
     gutil.log('123');
 });
 
-gulp.task('less',function(){
-   gulp.src(paths.src + '/css/less/**/*.less')
-       //.pipe(less({
-       //    paths:[path.join(__dirname,'less','includes')]
-       //}))
-       .pipe(less())
-       .pipe(gulp.dest(paths.dest + '/css/temp'))
-   // gutil.log(__dirname)
+gulp.task('less',['clean-temp'],function(){
+    gulp.src(paths.src + '/css/less/**/*.less')
+        //.pipe(less({
+        //    paths:[path.join(__dirname,'less','includes')]
+        //}))
+        .pipe(less())
+        .pipe(gulp.dest(paths.dest + '/css/temp'))
+    // gutil.log(__dirname)
 });
 
 gulp.task('css',function(){
@@ -72,12 +72,12 @@ gulp.task('css',function(){
     //        extname:'.min.css'
     //    }))
     //    .pipe(gulp.dest(paths.dest));
-        //.pipe(notify({
-        //    message:'styles task complete'
-        //}));
+    //.pipe(notify({
+    //    message:'styles task complete'
+    //}));
 
     gulp.src([paths.dest + '/css/temp/t.css',
-    paths.dest + '/css/temp/s.css',
+        paths.dest + '/css/temp/s.css',
         paths.src + '/css/t1.css'
     ]).pipe(concat('/css/all.css'))
         .pipe(gulp.dest(paths.dest))
@@ -117,4 +117,4 @@ gulp.task('watch',function(){
 
 
 //gulp.task('default',['clean','js','less','css','images']);
-gulp.task('default',['watch','js','less','css','images','clean-temp']);
+gulp.task('default',['watch','js','less','css','images']);
