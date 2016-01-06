@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../bower_components/vue/dist/vue.js"></script>
+</head>
+<body>
+<div class="J_app">
+    <ul>
+        <li v-for="todo in todos">
+            {{todo.text}}
+        </li>
+    </ul>
+</div>
+<script>
+    var v = new Vue({
+        el:'.J_app',
+        data:{
+            todos:[
+                {
+                    text:'lean javascript'
+                },
+                {
+                    text:'lean vue.js'
+                },
+                {
+                    text:'build something'
+                }
+            ]
+        }
+    });
+</script>
+</body>
+</html>

@@ -8,8 +8,13 @@
 <body>
 <div class="test">
     <input v-model="message">
+
     <br/>
+
     {{message}}
+    <br>
+    <p>{{message.split('').reverse().join(' ')}}</p>
+    <div data-test="{{message}}"></div>
 
 </div>
 

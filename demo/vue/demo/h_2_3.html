@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../bower_components/vue/dist/vue.js"></script>
+</head>
+<body>
+<div class="J_test">
+    <input v-model="newTodo" v-on:keyup.enter="addTodo">
+    <ul>
+        <li v-for="todo in todos">
+            <span>{{todo.text}}</span>
+            <button v-on:click="removeTodo($index)" v-on:mouseover="mouseoverTodo($index)">X</button>
+
+
+        </li>
+    </ul>
+    <div v-if="isShow" v-on:mouseover="hide" v-on:mouseout="show">显示</div>
+</div>
+
+<script>
+    var v = new Vue({
+        el:'.J_test',
+        data:{
+            isShow:true,
+            newTodo:'',
+            todos:[
+                {
+                    text:'test 1'
+                },
+                {
+                    text:'test2'
+                },
+                {
+                    text:'test 3'
+                }
+
+            ]
+        },
+        methods:{
+            addTodo:function(){
+                var text = this.newTodo.trim();
+                if(text){
+                    this.todos.unshift({text: text})
+                }
+            },
+            removeTodo:function(index){
+                this.todos.splice(index,1);
+            },
+            mouseoverTodo:function(index){
+                var text = this.todos[index].text
+                var idx = ++index;
+                alert(idx + ':' + text);
+                if(!this.isShow){
+                    this.isShow = true;
+                }
+            },
+            show:function(){
+                this.isShow = false;
+            },
+            hide:function(){
+                this.isShow = true;
+            }
+
+        }
+
+
+    })
+</script>
+
+</body>
+</html>
