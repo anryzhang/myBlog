@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta name="flexible" content="initial-dpr=2,maximum-dpr=3" />
+    <script>
+        var metaEl = doc.createElement('meta');
+        var scale = isRetina ? 0.5:1;
+        metaEl.setAttribute('name', 'viewport');
+        metaEl.setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+        if (docEl.firstElementChild) {
+            document.documentElement.firstElementChild.appendChild(metaEl);
+        } else {
+            var wrap = doc.createElement('div');
+            wrap.appendChild(metaEl);
+            documen.write(wrap.innerHTML);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
