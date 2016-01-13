@@ -53,7 +53,7 @@ gulp.task('js',function(){
     gutil.log('123');
 });
 
-gulp.task('less',['clean-temp'],function(){
+gulp.task('less',function(){
     gulp.src(paths.src + '/css/less/**/*.less')
         //.pipe(less({
         //    paths:[path.join(__dirname,'less','includes')]
@@ -106,6 +106,7 @@ gulp.task('images',function(){
 gulp.task('watch',function(){
     gulp.watch(paths.src +'/js/**/*.js',['js']);
     gulp.watch(paths.src + '/css/**/*.css',['css']);
+    gulp.watch(paths.src + '/css/**/*.less',['less']);
     gulp.watch(paths.src + '/images/**/*',['images']);
 
     var server = livereload()

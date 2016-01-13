@@ -1,5 +1,29 @@
+@import "px2rem.less";
+*{
+  margin: 0;
+  padding: 0
+
+}
 ul{
   margin:0;
   padding:0;
   list-style: none;
+  li{
+    .width(228);
+    .height(98);
+    .fontsize(12);
+    float: left;
+    border:1px solid #333;
+    background: #ccc;
+    .margin(10);
+    .padding(0);
+
+  }
+
+}
+.img{
+  .width(375);
+  img{
+    width:100%;
+  }
 }
