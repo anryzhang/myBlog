@@ -14,8 +14,8 @@ var gulp = require('gulp'),
     livereload = require('gulp-livereload'),
     notify = require('gulp-notify'),
     less = require('gulp-less'),
-    path = require('path')
-    ;
+    path = require('path');
+    sass = require('gulp-sass');
 var version = 151217
 var dir = 'test';
 var paths = {
@@ -88,7 +88,13 @@ gulp.task('css',function(){
         .pipe(gulp.dest(paths.dest))
 
 
-})
+});
+
+gulp.task('sass',function(){
+    gulp.src([path.src + '/css/scss/**/*.scss'])
+        .pipe(sass())
+        .pipe(gulp.dest(path.dest + '/css/temp1'));
+});
 
 gulp.task('images',function(){
     gulp.src([paths.src + '/images/**/*'])
@@ -107,6 +113,7 @@ gulp.task('watch',function(){
     gulp.watch(paths.src +'/js/**/*.js',['js']);
     gulp.watch(paths.src + '/css/**/*.css',['css']);
     gulp.watch(paths.src + '/css/**/*.less',['less']);
+    gulp.watch(paths.src + '/css/**/*.scss',['sass']);
     gulp.watch(paths.src + '/images/**/*',['images']);
 
     var server = livereload()
