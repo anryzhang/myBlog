@@ -1,21 +1,27 @@
 /**
+ sass = require('gulp-sass'),
  * Created by anry on 2015/12/18.
  */
 var gulp = require('gulp'),
-    gutil = require('gulp-util'),
+    clean = require('gulp-clean'),
+    sass = require('gulp-sass'),
+    group = require('gulp-group-files'),
     minifycss = require('gulp-minify-css'),
-    autoprefixer = require('gulp-autoprefixer'),
     uglify = require('gulp-uglify'),
     imagemin = require('gulp-imagemin'),
-    clean = require('gulp-clean'),
     concat = require('gulp-concat'),
     rename = require('gulp-rename'),
-    cache = require('gulp-cache'),
-    livereload = require('gulp-livereload'),
-    notify = require('gulp-notify'),
-    less = require('gulp-less'),
-    path = require('path');
-    sass = require('gulp-sass');
+    autoprefixer = require('gulp-autoprefixer'),
+    livereload = require('gulp-livereload');
+
+    //gutil = require('gulp-util'),
+    //autoprefixer = require('gulp-autoprefixer'),
+    //cache = require('gulp-cache'),
+    //
+    //notify = require('gulp-notify'),
+    //less = require('gulp-less'),
+    //path = require('path');
+;
 var version = 151217
 var dir = 'test';
 var paths = {
@@ -23,106 +29,92 @@ var paths = {
     dest:'bulid/' + dir + '/' + version
 };
 
+var paths = {
+    css:{
+        css1:{
+            src:'dev/css/scss/s.scss',
+            dest:'build/css/'
+        },
+        css2:{
+            src:'dev/css/scss/b.scss',
+            dest:'build/css/'
+        }
+    },
+    js:{
+        t1:{
+            src:'dev/js/t.js',
+            dest:'build/js/'
+        },
+        t2:{
+            src:'dev/js/t2.js',
+            dest:'build/js'
+        }
+
+    }
+}
+
 gulp.task('clean',function(){
-    gulp.src([paths.dest],{read:false})
-        .pipe(clean())
-})
-gulp.task('clean-temp',function(){
-    gulp.src([paths.dest+'/css/temp'])
-        .pipe(clean())
-})
-
-
-gulp.task('js',function(){
-    //gulp.src('js/**/*.js')
-    gulp.src([paths.src + '/js/t.js',
-            paths.src + '/js/t2.js'])
-        .pipe(concat('/js/all.js'))
-        .pipe(gulp.dest(paths.dest))
-        .pipe(uglify())
-        .pipe(rename('/js/all.min.js'))
-        .pipe(gulp.dest(paths.dest));
-
-    //gulp.src([paths.src + 'js/t.js'])
-    //    .pipe(concat('/js/t.js'))
-    //    .pipe(gulp.dest(paths.dest))
-    //    .pipe(uglify())
-    //    .pipe(rename('/js/t.min.js'))
-    //    .pipe(gulp.dest(paths.dest));
-
-    gutil.log('123');
-});
-
-gulp.task('less',function(){
-    gulp.src(paths.src + '/css/less/**/*.less')
-        //.pipe(less({
-        //    paths:[path.join(__dirname,'less','includes')]
-        //}))
-        .pipe(less())
-        .pipe(gulp.dest(paths.dest + '/css/temp'))
-    // gutil.log(__dirname)
-});
-
-gulp.task('css',function(){
-    //gulp.src([paths.src + 'css/t1.css'])
-    //    .pipe(concat('/css/all.css'))
-    //    .pipe(gulp.dest(paths.dest))
-    //    .pipe(minifycss())
-    //    .pipe(rename({
-    //        extname:'.min.css'
-    //    }))
-    //    .pipe(gulp.dest(paths.dest));
-    //.pipe(notify({
-    //    message:'styles task complete'
-    //}));
-
-    gulp.src([paths.dest + '/css/temp/t.css',
-        paths.dest + '/css/temp/s.css',
-        paths.src + '/css/t1.css'
-    ]).pipe(concat('/css/all.css'))
-        .pipe(gulp.dest(paths.dest))
-        .pipe(minifycss())
-        .pipe(rename({
-            extname:'.min.css'
-        }))
-        .pipe(gulp.dest(paths.dest))
-
-
+    gulp.src([paths.css.css1.dest,paths.js.t1.dest],{read:false})
+        .pipe(clean());
 });
 
 gulp.task('sass',function(){
-    gulp.src([path.src + '/css/scss/**/*.scss'])
-        .pipe(sass())
-        .pipe(gulp.dest(path.dest + '/css/temp1'));
+    return group(paths.css,function(key,filest){
+        return gulp.src(filest.src)
+            .pipe(sass({outputStyle:'expanded'}))
+            .pipe(autoprefixer())
+            .pipe(gulp.dest(filest.dest))
+            //.pipe(minifycss())
+            //.pipe(gulp.dest(filest.dest))
+            .pipe(livereload());
+    })();
 });
 
-gulp.task('images',function(){
-    gulp.src([paths.src + '/images/**/*'])
-        .pipe(cache(imagemin({
-            optimizationLevel: 3,
-            progressive: true,
-            interlaced: true
-        })))
-        .pipe(gulp.dest(paths.dest + '/images'))
+gulp.task('js',function(){
+   return group(paths.js,function(key,filest){
+       return gulp.src(filest.src)
+           .pipe(gulp.dest(filest.dest))
+           //.pipe(uglify())
+           //.pipe(gulp.dest(filest.dest));
+   })();
+});
 
+gulp.task('concat-css',function(){
+    gulp.src(['build/css/s.css',
+        'build/css/b.css'
+    ])
+        .pipe(concat('all.css'))
+        .pipe(minifycss())
+        .pipe(gulp.dest('build/css'));
+});
+
+gulp.task('concat-js',function(){
+    gulp.src(['build/js/t2.js',
+            'build/js/t.js'])
+        .pipe(concat('all.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('build/js'));
+});
+
+gulp.task('imagemin',function(){
+    gulp.src('dev/images/*.{png,jpg,gif,ico}')
+        .pipe(imagemin({
+            optimizationLevel:5,
+            progressive:true,
+            interlaced:true,
+            multipass:true
+        }))
+        .pipe(gulp.dest('build/images'));
 })
-
-
 
 gulp.task('watch',function(){
-    gulp.watch(paths.src +'/js/**/*.js',['js']);
-    gulp.watch(paths.src + '/css/**/*.css',['css']);
-    gulp.watch(paths.src + '/css/**/*.less',['less']);
-    gulp.watch(paths.src + '/css/**/*.scss',['sass']);
-    gulp.watch(paths.src + '/images/**/*',['images']);
+    livereload.listen();
+    gulp.watch('dev/css/**/*.scss',['sass']);
+    gulp.watch('dev/js/**/*.js',['js']);
+});
 
-    var server = livereload()
-    gulp.watch([paths.src]).on('change',function(file){
-        server.changed(file.path)
-    })
-
-})
+gulp.task('default',['clean'],function(){
+    gulp.start('sass','js',/*'concat-css','concat-js',*/'imagemin')
+});
 
 
-//gulp.task('default',['clean','js','less','css','images']);
-gulp.task('default',['watch','js','less','css','images']);
