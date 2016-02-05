@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5, user-scalable=no">
+
+
+
+
+
+
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.0.2.js"></script>
+
+
+
+
+    <style type="text/css">
+        body {
+            font-family: "Helvetica Neue", Ubuntu, "WenQuanYi Micro Hei", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Micro Hei Mono", "WenQuanYi Zen Hei", "WenQuanYi Zen Hei", "Apple LiGothic Medium", "SimHei", "ST Heiti", "WenQuanYi Zen Hei Sharp", Arial, sans-serif;
+            -webkit-font-smoothing:antialiased;
+            line-height: 1.7em;
+            text-shadow: 0 0 1px rgba(255,255,255,0.1);
+            background: #fff;
+            margin: 0;
+        }
+        /*HEADER*/
+        h1,h2,h3,h4,h5,h6 {
+            margin: 1em 0;
+            font-weight: 700;
+            line-height: 1.333em;
+        }
+        h1{font-size: 4em;}
+        h2{font-size: 3.2em;}
+        h3{font-size: 2.4em;}
+        h4{font-size: 1.6em;}
+        h5{font-size: 1.2em;}
+        h6{font-size: 1em;}
+        /*HEADER END*/
+        .test-box {
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            left: 0;
+            top: 30%;
+        }
+        .select, .select ul, .select li, .select ol{
+            list-style: none;
+            list-style-type: none;
+            margin: 0px;
+            padding: 0px;
+        }
+        .select {
+            padding: 0;
+            margin: 2px;
+            line-height: 1.7em;
+            /*font-size: 12px;*/
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+            background: #fff;
+            background-image: linear-gradient(#fff,#f5f5f5 49%,#eaeaea 50%, #f2f2f2);
+            /*border: 1px solid #ccc;*/
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(255,255,255,0.5);
+            box-shadow: 0 1px 3px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,0.7), inset 0 1px 2px rgba(255,255,255,0.5);
+        }
+        .select>span {
+            padding: 2px 20px 2px .6em;
+            margin: 0;
+            white-space: nowrap;
+        }
+        .select>span::after, .select>span::before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border: 4px solid #000;
+            border-width: 4px 3px;
+            right: 6px;
+            top: 50%;
+        }
+        .select>span::after {
+            border-color: transparent transparent #444 transparent;
+            margin-top: -10px;
+        }
+        .select>span::before {
+            border-color: #444 transparent transparent transparent;
+            margin-top: 2px;
+        }
+        .select>ul {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #fff;
+            padding: 5px 0;
+            /*border: 1px solid #e8e8e8;*/
+            border-radius: 4px;
+            left: 50%;
+            -webkit-transform: translate(-50%, 0);
+            -moz-transform: translate(-50%, 0);
+            -o-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+            top: -2px;
+            z-index: 2;
+            box-shadow: 0 7px 10px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,0.3);
+            text-align: left;
+            height:300px;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        .select>ul>li {
+            padding: 0 1.5em;
+            position: relative;
+            white-space: nowrap;
+        }
+        .select>ul>li:hover {
+            background-image: linear-gradient(#609cfe, #5183d4);
+            color: #fff;
+            box-shadow: inset 0 0 1px rgba(0,0,0,0.3);
+            text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+        }
+        .select>ul>li.select-cat::before {
+            position: absolute;
+            content: "✓";
+            width: 1em;
+            height: 18px;
+            line-height: 18px;
+            top: 50%;
+            margin-top: -10px;
+            left: 5px;
+        }
+    </style>
+
+    <title> by Kaiyuan</title>
+
+
+
+
+
+
+
+    <script type='text/javascript'>//<![CDATA[
+    $(window).load(function(){
+        jQuery(document).ready(function($) {
+            function selectCopy () {
+                $('select').css('',function () {
+                    var thisID = $(this).attr('id');
+                    var thisVALUE = $(this).val();
+                    var thisValText = $('#'+thisID+'>option[value='+thisVALUE+']').text();
+                    var optionLength = $('#'+thisID+'>option').length;
+                    var addHtml = '<span id="select-'+thisID+'" class="select" data-selectid="'+thisID+'"><span>'+thisValText+'</span>';
+                    var addHtmlEnd = '</span>';
+                    var addOpt = '<ul>';
+                    for (i = 1; i < optionLength+1; i++) {
+                        var thisOptVal = $('#'+thisID+'>option:nth-child('+i+')').val();
+                        var thisOptText = $('#'+thisID+'>option:nth-child('+i+')').text();
+                        if (thisOptVal != thisVALUE) {
+                            addOpt+='<li data-value="'+thisOptVal+'">'+thisOptText+'</li>';
+                        } else {
+                            addOpt+='<li data-value="'+thisOptVal+'" class="select-cat">'+thisOptText+'</li>';
+                        };
+                    };
+                    addOpt += '</ul>';
+                    $(this).after(addHtml+addOpt+addHtmlEnd);
+                    $(this).hide();
+                });
+            };
+            if((!navigator.userAgent.match(/iPhone/i)) || (!navigator.userAgent.match(/iPod/i))){
+                selectCopy();
+            };
+
+            $(document).on('click','.select>span',function(event) {
+                var parentID = $(this).parent();
+                var thisID = parentID.attr('id');
+                var thisSelectID = $('#'+thisID).data('selectid');
+                $('#'+thisID+'>ul').fadeIn('fast');
+            });
+            $(document).on('click','.select>ul>li',function(event) {
+                var parentUL = $(this).parent();
+                var parentID = $(parentUL).parent();
+                var thisID = parentID.attr('id');
+                // var thisNO = $(this).index();
+                var thisTEXT = $(this).text();
+                var thisVALUE = $(this).data('value');
+                var thisSelectID = $('#'+thisID).data('selectid');
+                $('#'+thisID+'>ul>li').removeClass('select-cat');
+                $(this).addClass('select-cat');
+                $('#'+thisSelectID).val(thisVALUE);
+                $('#'+thisID+'>span').text(thisTEXT);
+            });
+            $('html').click(function(event) {
+                $('.select>ul').fadeOut("fast");
+            });
+        });
+    });//]]>
+
+    </script>
+
+
+</head>
+
+<body>
+<div class="test-box">
+    <select name="pay1" id="pay1">
+        <option value="1">tab1</option>
+        <option value="2" selected>tab2dasdasdas</option>
+        <option value="3">tab3</option>
+        <option value="001">001</option>
+        <option value="002">002</option>
+        <option value="003">003</option>
+        <option value="004">004</option>
+        <option value="005">005</option>
+        <option value="006">006</option>
+        <option value="007">007</option>
+        <option value="008">008</option>
+        <option value="009">009</option>
+        <option value="010">010</option>
+        <option value="011">011</option>
+        <option value="012">012</option>
+        <option value="013">013</option>
+        <option value="014">014</option>
+        <option value="015">015</option>
+        <option value="016">016</option>
+        <option value="017">017</option>
+        <option value="018">018</option>
+        <option value="019">019</option>
+        <option value="020">020</option>
+        <option value="021">021</option>
+        <option value="022">022</option>
+        <option value="023">023</option>
+        <option value="024">024</option>
+        <option value="025">025</option>
+        <option value="026">026</option>
+        <option value="027">027</option>
+        <option value="028">028</option>
+        <option value="029">029</option>
+        <option value="030">030</option>
+    </select>
+    <select name="" id="pay2">
+        <option value="1">tab-1ddasdsa</option>
+        <option value="2">tab-2</option>
+        <option value="3">tab-3</option>
+    </select>
+    <!-- 	<span id="select-pay1" class="select" data-selectid="pay1" >
+            <span>tabg</span>
+            <ul>
+                <li class="select-cat" data-value="1">tab1</li>
+                <li data-value="2">tab2</li>
+                <li data-value="3">tab3</li>
+            </ul>
+        </span> -->
+</div>
+
+</body>
+
+</html>
+

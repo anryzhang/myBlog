@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../bower_components/vue/dist/vue.js"></script>
+</head>
+<body>
+<div class="test">
+    <input v-model="message">
+
+    <br/>
+
+    {{message}}
+    <br>
+    <p>{{message.split('').reverse().join(' ')}}</p>
+    <div data-test="{{message}}"></div>
+
+</div>
+
+<script>
+ var v =  new Vue({
+        el:'.test',
+        data:{
+            message:'hello vue.js'
+        }
+    })
+</script>
+</body>
+</html>

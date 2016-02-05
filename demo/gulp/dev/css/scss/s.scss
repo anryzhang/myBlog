@@ -1,0 +1,25 @@
+@import "config.scss";
+
+ul{
+  margin: px2rem(0);
+  padding: px2rem(0);
+  li{
+    width:px2rem(228);
+    height:px2rem(98);
+    font-size:px2rem(24);
+    margin:px2rem(0);
+    padding:px2rem(0);
+    color: red;
+    background: #000;
+    line-height:px2rem(98);
+    text-align: center;
+  }
+
+}
+
+.img{
+  width:px2rem(375);
+  img{
+    width:100%;
+  }
+}
