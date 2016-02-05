@@ -11,7 +11,7 @@ const concat = require('gulp-concat');
 const livereload = require('gulp-livereload');
 
 gulp.task('es',function(){
-    return gulp.src('js/app.js')
+    return gulp.src('js/*.js')
         .pipe(babel({
             presets:['es2015']
         }))
