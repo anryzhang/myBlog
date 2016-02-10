@@ -8,5 +8,5 @@
    var content = require('./content.js');
     console.log(content);
     document.write(content);
-
+    console.log(1);
 })();
