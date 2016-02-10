@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>React 组件</title>
+    <script src="../react/react-demos/build/react.js"></script>
+    <script src="../react/react-demos/build/JSXTransformer.js"></script>
+</head>
+<body>
+<div id="container"></div>
+<div id="test"></div>
+<div id="J_input"></div>
+<div id="J_hello"></div>
+<script type="text/jsx">
+    var Greet = React.createClass({
+        render:function(){
+            return (
+
+                    <h1 className="test"  classID="J_test" >hello {this.props.name}</h1>
+            );
+        }
+    });
+
+
+    React.render(
+            <Greet name="Jack" />,
+            document.getElementById('container')
+    );
+    React.render(
+            <Greet name="test" />,
+            document.getElementById('test')
+    );
+    //input 组件
+    var InputState = React.createClass({
+        getInitialState:function(){
+            return {enable:false};
+        },
+        handleClick:function(event){
+
+            this.setState({
+                enable:!this.state.enable
+            });
+        },
+        render:function(){
+            return (
+                    <p>
+                        <input type="text" disabled={this.state.enable} />
+                        <button onClick={this.handleClick}>change state</button>
+                    </p>
+            );
+        }
+    });
+
+    React.render(
+            <InputState />,
+            document.getElementById('J_input')
+    );
+
+    //
+
+    var Hello = React.createClass({
+        getInitialState:function(){
+            return {
+                opacity:1.0
+            };
+        },
+        componentDidMount:function(){
+            this.timer = window.setInterval(function(){
+                var opacity = this.state.opacity;
+                opacity -= .05;
+                if(opacity < 0.1){
+                    opacity = 1.0;
+                }
+                this.setState({
+                    opacity:opacity
+                });
+            }.bind(this),100);
+        },
+        render:function(){
+            return(
+                    <div style={{opacity:this.state.opacity}}>
+                        hello {this.props.name}
+                    </div>
+            );
+        }
+    });
+
+    React.render(
+            <Hello name="world" />,
+            document.getElementById('J_hello')
+    )
+
+</script>
+</body>
+</html>
