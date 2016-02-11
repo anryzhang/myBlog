@@ -1,0 +1,49 @@
+markdown: rdiscount
+pygments: true
+paginate: 8
+
+safe: false
+
+#站点基础配置
+title: diy1818
+subTitle: Good children, Constantly learning, Constantly growing.
+description: 基于 Jekyll 搭建起来的博客。
+url: http://anryzhang.github.io/myBlog
+feed: myBlog/atom.xml
+
+#菜单配置
+nav:
+  - text: 首页
+    url: /myBlog/index.html
+  - text: 文章归档
+    url: /myBlog/archives.html
+  - text: 作品
+    url: /myBlog/works.html
+  - text: 联系我
+    url: http://www.diy1818.com/a/aboutus/index.html
+  - text: 博客源代码
+    url: https://github.com/anryzhang/myBlog
+
+#theme config
+themes: /themes/assets
+
+#配置你喜欢的顶部背景图片
+headimg:
+  - item: /themes/assets/images/hdbg1.jpg
+  - item: /themes/assets/images/hdbg2.jpg
+  - item: /themes/assets/images/hdbg3.jpg
+  - item: /themes/assets/images/hdbg4.jpg
+
+
+#作者信息
+author:
+  link: http://www.diy1818.com/a/aboutus/index.html
+
+#评论信息
+disqus:
+  config: true
+  id: anryzhang
+
+duoshuo:
+  config: false
+  id: anryzhang

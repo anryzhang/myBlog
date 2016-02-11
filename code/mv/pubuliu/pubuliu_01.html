@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #container{
+            width: 1000px;
+            border: 1px solid red;
+            margin: 50px auto 0;
+            position: relative;
+
+        }
+        #container img{
+            position: absolute;
+        }
+    </style>
+    <script src="../../bower_components/jquery/dist/jquery.js"></script>
+    <script>
+        $(function(){
+            var oContainer = $('#container');
+            var oLoader = $('#loader');
+            var iWidth = 200;
+            var iSpace = 10;
+            var iOuterWidth = iWidth + iSpace;
+            var iCells = 0;
+            var iBtn = true;
+
+            var sUrl='pubuliu01.json';
+            var iPage=0;
+
+            var arrL = [];
+            var arrT = [];
+
+
+            function setCells(){
+                iCells = Math.floor($(window).innerWidth() / iOuterWidth);
+                document.title = iCells;
+                oContainer.css('width',iOuterWidth * iCells - iSpace);
+            }
+            setCells();
+            for(var i = 0; i < iCells; i++){
+                arrT.push(0);
+                arrL.push(i*iOuterWidth);
+            }
+
+            function getMin(){
+                var iv = arrT[0];
+                var index = 0;
+                for(var i = 1; i < arrT.length; i++){
+                    if(arrT[i] < iv){
+                        iv = arrT[i];
+                        index = i;
+                    }
+                }
+                return index;
+            }
+
+
+
+            function getData(){
+                oLoader.show();
+                if(iBtn){
+                    iBtn = false;
+                    $.getJSON(sUrl,'page=' + iPage,function(data){
+                        console.log(data.data);
+                        oLoader.show();
+                        $.each(data.data,function(index,obj){
+                            var oImg = $('<img />');
+
+                            oImg.attr('src',obj.img);
+                            oContainer.append(oImg);
+                            var iHeight = iWidth/obj.width * obj.height;
+
+                            oImg.css({
+                                width: iWidth,
+                                height: iHeight
+                            });
+                            //获取arrT最小高度
+                            var iMinIndex = getMin();
+                            oImg.css({
+                                left: arrL[iMinIndex],
+                                top: arrT[iMinIndex]
+                            });
+                            arrT[iMinIndex] += iHeight + 10;
+                            oLoader.hide();
+                            iBtn = true;
+                        });
+
+                    });
+                }
+
+            }
+            getData();
+            $(window).on('scroll',function(){
+                var iH = $(window).scrollTop() + $(window).innerHeight();
+                var iMinIndex = getMin();
+                if(arrT[iMinIndex] + oContainer.offset().top < iH){
+                    iPage++;
+                    getData();
+                }
+            });
+        })
+    </script>
+</head>
+<body>
+<div id="container">
+
+</div>
+<div id="loader">loading</div>
+</body>
+</html>

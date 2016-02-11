@@ -1,0 +1,14 @@
+{
+  "name": "GMU",
+  "homepage": "https://github.com/fex-team/GMU",
+  "_release": "c78002eb86",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "c78002eb86aeead98cbe3fa46d7d50f3803a8907"
+  },
+  "_source": "https://github.com/fex-team/GMU.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/fex-team/GMU.git",
+  "_direct": true
+}

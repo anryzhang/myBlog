@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function objectToJSON(value, key) {
+        var objectType = Object.prototype.toString.apply(value);
+
+        if (objectType === '[object Date]') {
+            return isFinite(value.valueOf())
+                    ?  value.getUTCFullYear()     + '-' +
+            f(value.getUTCMonth() + 1) + '-' +
+            f(value.getUTCDate())      + 'T' +
+            f(value.getUTCHours())     + ':' +
+            f(value.getUTCMinutes())   + ':' +
+            f(value.getUTCSeconds())   + 'Z'
+                    : null;
+        }
+
+        if (objectType === '[object String]' ||
+                objectType === '[object Number]' ||
+                objectType === '[object Boolean]') {
+            return value.valueOf();
+        }
+
+        if (objectType !== '[object Array]' &&
+                typeof value.toJSON === 'function') {
+            return value.toJSON(key);
+        }
+
+        return value;
+    }
+
+    function getType(obj){
+        var objType = Object
+    }
+</script>
+</body>
+</html>

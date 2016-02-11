@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    try{
+        bg;
+    }catch(e){
+        console.log(e);
+    }finally{
+        console.log("finally");
+    }
+
+    function max(){
+        var maxVal = -Infinity;
+        for(var i = 0; i < arguments.length; i++){
+            if(arguments[i] > maxVal){
+                maxVal = arguments[i];
+            }
+        }
+        return  maxVal;
+    }
+    var maxV =max(1,6,9,2,3,4);
+    console.log(maxV);
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../lib/underscore.js"></script>
+    <script src="../../bower_components/jquery/dist/jquery.js"></script>
+</head>
+<body>
+<div class="container"></div>
+<script>
+    var myModule = (function($,_){
+        function privateMothod1(){
+            $('.container').html('test');
+        }
+        function privateMothod2(){
+            console.log(_.min([10,5,100,2,1000]));
+        }
+
+        return {
+            publicMethod:function(){
+                privateMothod1();
+            },
+            publicMethod2:function(){
+                myModule2.publicMethod();
+            }
+        }
+    })(jQuery,_);
+
+    myModule.publicMethod();
+
+    var myModule2 = (function($,_){
+        var privateVariable = 'hello world';
+        var module = {
+            publicProperty:'Foobar',
+            publicMethod:function(){
+                console.log(privateVariable + ',' + this.publicProperty);
+                $('.container').html(privateVariable + ',' + this.publicProperty);
+            }
+        };
+
+        return module;
+
+    })(jQuery,_);
+
+</script>
+</body>
+</html>
