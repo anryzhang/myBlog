@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <title>React 组件复用</title>
+    <script src="../react/react-demos/build/react.js"></script>
+    <script src="../react/react-demos/build/JSXTransformer.js"></script>
+</head>
+<body>
+<div id="J_search"></div>
+
+<script type="text/jsx">
+    var Search = React.createClass({
+        render:function(){
+            return (
+                    <div>
+                        {this.props.searchType}:<input type="text" />
+                        <button>search</button>
+                    </div>
+            );
+        }
+    });
+    var Page = React.createClass({
+        render:function(){
+            return (
+                    <div>
+                        <h1>welcome</h1>
+                        <Search searchType="Title"></Search>
+                        <Search searchType="Content"></Search>
+                    </div>
+            );
+        }
+    });
+
+    React.render(
+            <Page />,
+            document.getElementById('J_search')
+    )
+</script>
+</body>
+</html>
