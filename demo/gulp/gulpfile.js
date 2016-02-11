@@ -12,6 +12,7 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     rename = require('gulp-rename'),
     autoprefixer = require('gulp-autoprefixer'),
+    imageisux = require('gulp-imageisux'),
     livereload = require('gulp-livereload');
 
     //gutil = require('gulp-util'),
@@ -105,6 +106,12 @@ gulp.task('imagemin',function(){
             multipass:true
         }))
         .pipe(gulp.dest('build/images'));
+});
+
+var dirpath = '/build/images/'
+gulp.task('imageisux',function(){
+    return gulp.src(['dev/images/*'])
+        .pipe(imageisux(dirpath,true));
 })
 
 gulp.task('watch',function(){
