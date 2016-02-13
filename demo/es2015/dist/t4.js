@@ -24,3 +24,7 @@ var name = 'bob',
     time = 'today';
 var d = 'hello ' + name + ' , how are you ' + time;
 console.log(d);
+
+var q = 99;
+var myStr = q + ' bootles of beer on the wall';
+document.body.innerHTML = myStr;

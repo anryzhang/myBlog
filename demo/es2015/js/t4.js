@@ -21,3 +21,7 @@ console.log(b.repeat(3));
 var name = 'bob',time = 'today';
 var d = `hello ${name} , how are you ${time}`;
 console.log(d);
+
+let q = 99;
+let myStr = `${q} bootles of beer on the wall`;
+document.body.innerHTML = myStr;
