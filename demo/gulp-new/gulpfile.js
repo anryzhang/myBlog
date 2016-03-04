@@ -20,7 +20,7 @@ var clean = require('gulp-clean');
 //基础设置,一般不用修改
 var path = {
     src:'./src/',
-    dest:'./dest/'
+    dest:'./dist/'
 };
 //开发打包的文件
 var assets = {
@@ -117,7 +117,7 @@ gulp.task('rev',['base64'],function(){
     gulp.src(path.src + '*.html')
         .pipe(rev())
         .pipe(htmlmin(options))
-        .pipe(gulp.dest('dest/'))
+        .pipe(gulp.dest('dist/'))
         .pipe(livereload())
 });
 
@@ -128,6 +128,6 @@ gulp.task('watch',function(){
     gulp.watch(path.src + '**/*.html',['rev']);
 });
 
-gulp.task('default',['clean','bower','scripts'],function(){
+gulp.task('default',['clean','scripts'],function(){
     gulp.start('rev');
 });

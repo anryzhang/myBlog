@@ -6,3 +6,5 @@
 @function rem2px($px){
   @return $px/2 + px;
 }
+
+@import '../lib/modularized-normalize-scss/_normalize.scss';

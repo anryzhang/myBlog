@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "zepto": "^1.1.6",
-    "fastclick": "^1.0.6"
+    "fastclick": "^1.0.6",
+    "modularized-normalize-scss": "https://github.com/hail2u/normalize.scss.git#^3.0.3"
   }
 }
