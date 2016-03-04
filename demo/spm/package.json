@@ -1,0 +1,32 @@
+{
+  "version": "1.0.0",
+  "spm": {
+    "output":[
+      "./dev/**/*.html",
+      "./dev/**/*.js",
+      "./dev/scss/*.less"
+    ],
+    "build":{
+      "global": {
+        "jquery": "jQuery",
+        "zepto":"zepto"
+      },
+      "define":{
+        "DEBUG":false
+      },
+      "extractCSS": true,
+      "autoprefixer":true
+    },
+    "server":{
+      "define":{
+        "DEBUG":true
+      }
+    },
+    "dependencies": {
+      "jquery": "~2.1.4",
+      "zepto": "~1.1.3",
+      "normalize.css": "~3.0.1"
+    }
+
+  }
+}

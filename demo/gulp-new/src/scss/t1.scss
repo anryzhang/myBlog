@@ -1,0 +1,21 @@
+/**
+ * Created by ziyu on 16/3/3.
+ */
+@charset "UTF-8";
+@import "config";
+body{
+  padding: 0;
+  margin:0;
+  width:rem2px(1000);
+  height: auto;
+  background: url('../images/good.png') no-repeat;
+  h1{
+    background: url('../images/mac.jpg') no-repeat;
+    overflow: hidden;
+    margin-left:30px;
+    margin-top:80px;
+  }
+  .test{
+    padding:rem2px(20);
+  }
+}

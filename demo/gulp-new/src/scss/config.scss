@@ -1,0 +1,8 @@
+/**
+ * Created by ziyu on 16/3/3.
+ */
+@charset "UTF-8";
+
+@function rem2px($px){
+  @return $px/2 + px;
+}
