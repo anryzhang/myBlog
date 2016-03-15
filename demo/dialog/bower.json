@@ -1,0 +1,23 @@
+{
+  "name": "gulp",
+  "description": "",
+  "main": "index.js",
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1"
+  },
+  "devDependencies": {
+    "zepto": "^1.1.6",
+    "fastclick": "^1.0.6",
+    "modularized-normalize-scss": "https://github.com/hail2u/normalize.scss.git#^3.0.3"
+  }
+}
