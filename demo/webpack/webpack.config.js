@@ -52,4 +52,4 @@ module.exports = {
         new webpack.BannerPlugin('this file is created by ziyu'),
         new  ExtractTextPlugin('[name].css')
     ]
-}
+};
