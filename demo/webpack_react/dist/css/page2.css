@@ -1,0 +1,28 @@
+/**
+ * Created by ziyu on 16/3/14.
+ */
+/* helper classes */
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
