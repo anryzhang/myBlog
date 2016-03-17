@@ -1,0 +1,2 @@
+/*! this file is created by ziyu */
+!function(o){function t(r){if(n[r])return n[r].exports;var e=n[r]={exports:{},id:r,loaded:!1};return o[r].call(e.exports,e,e.exports,t),e.loaded=!0,e.exports}var n={};return t.m=o,t.c=n,t.p="",t(0)}([function(o,t,n){!function(){n(2),document.write("it works");var o=n(1);console.log(o),document.write(o)}()},function(o,t){o.exports="it works form content.js"},function(o,t){}]);

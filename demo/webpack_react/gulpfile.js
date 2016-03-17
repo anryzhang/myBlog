@@ -148,7 +148,7 @@ gulp.task('serve', function () {
 gulp.task('watch', function () {
     livereload.listen();
     gulp.watch(dev + 'css/**/*.scss', ['base64']);
-    gulp.watch(dev + '*.html', ['html']);
+    gulp.watch(dev + '**/*.html', ['html']);
     gulp.watch(dev + 'scripts/**/*.{js,jsx}', ['scripts']);
     gulp.watch(dev + 'images/**/*.{png,jpg,jpeg,gif}',['images']);
 });
