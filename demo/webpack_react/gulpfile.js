@@ -41,19 +41,29 @@ var autoprefixerBrowsers = [
 
 
 gulp.task('scripts', function () {
-
-    return group(webpackConfig.entry, function (key, fileset) {
-
-        return gulp.src(fileset)
+    var entry = webpackConfig.entry;
+    for(var obj in entry){
+        gulp.src(entry[obj])
             .pipe($.webpack(webpackConfig))
             .pipe(isProduction ? $.uglify() : $.util.noop())
             .pipe(gulp.dest(dist + 'js/'))
             .pipe($.size({title: 'js'}))
             .pipe(connect.reload())
-            .pipe(livereload())
-
-
-    })();
+            .pipe(livereload());
+        return ;
+    }
+    //return group(webpackConfig.entry, function (key, fileset) {
+    //
+    //    return gulp.src(fileset)
+    //        .pipe($.webpack(webpackConfig))
+    //        .pipe(isProduction ? $.uglify() : $.util.noop())
+    //        .pipe(gulp.dest(dist + 'js/'))
+    //        .pipe($.size({title: 'js'}))
+    //        .pipe(connect.reload())
+    //        .pipe(livereload())
+    //
+    //
+    //})();
 
 });
 

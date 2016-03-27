@@ -9,25 +9,25 @@ ReactDOM.render(<JindexComponent />, document.getElementById('J_app'));
 
 import ComponentXieTong from './components/ComponentXieTong.jsx';
 let test = {
-    one:456,
-    two:989
+    one: 456,
+    two: 989
 };
 
 const componentXieTong = <ComponentXieTong {...test} />;
-let comed = ReactDOM.render(componentXieTong,document.getElementById('J_componentXieTong'));
+let comed = ReactDOM.render(componentXieTong, document.getElementById('J_componentXieTong'));
 //comed.setProps({two:777})
 
 //console.log($('body'));
 
 import TestMount from './components/TestMount.jsx';
 const testMount = <TestMount />;
-ReactDOM.render(testMount,document.getElementById('J_Mount'));
+ReactDOM.render(testMount, document.getElementById('J_Mount'));
 
 import TestAjax from './components/TestAjax.jsx';
 const testAjax = <TestAjax
-       url={$.getJSON('https://api.github.com/search/repositories?q=javascript&sort=stars')}
-    />;
-ReactDOM.render(testAjax,document.getElementById('J_ajax'));
+    url={$.getJSON('https://api.github.com/search/repositories?q=javascript&sort=stars')}
+/>;
+ReactDOM.render(testAjax, document.getElementById('J_ajax'));
 
 import WebSite from './pages/WebSite.js';
 
@@ -38,11 +38,10 @@ import MyForm from './components/FormTest.jsx';
 
 const myForm = <MyForm/>;
 var J_item = document.getElementsByClassName('J_item');
-for(let i = 0,len=J_item.length; i < len ; i++){
-    ReactDOM.render(myForm,J_item[i]);
+for (let i = 0, len = J_item.length; i < len; i++) {
+    ReactDOM.render(myForm, J_item[i]);
 
 }
-
 
 
 import IndexModule2 from './pages/home2.jsx';
