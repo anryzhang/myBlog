@@ -2,4 +2,5 @@
 _site
 .idea/
 demo/*/node_modules/
+demo/*/spm_modules/
 node_modules
