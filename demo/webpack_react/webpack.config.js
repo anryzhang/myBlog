@@ -1,6 +1,8 @@
 var path = require('path');
 var fs = require('fs');
 
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports.getConfig = function(type) {
 
   var isDev = type === 'development';
@@ -43,8 +45,23 @@ module.exports.getConfig = function(type) {
         query: {
           presets: ['react', 'es2015']
         }
-      }]
-    }
+      },
+        {
+          test:/\.scss$/,
+          //打包成单个文件
+          //loader: ExtractTextPlugin.extract('style-loader','css-loader!sass-loader')
+          //直接打包到html style
+          loader: "style!css!sass"
+        }
+      ]
+    },
+    resolve:{
+      root:'./',
+      extensions:['','.js','.json','.scss']
+    },
+    plugins:[
+      new  ExtractTextPlugin('[name].css')
+    ]
   };
 
   if(isDev){

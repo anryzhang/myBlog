@@ -24,3 +24,9 @@ let stateSetProps = <StateSetProps/>;
 ReactDOM.render(stateSetProps,Sele);
 
 
+//tab 选择
+import tabSelect from './plugins/tabSelect';
+
+tabSelect('.J_IT');
+
+

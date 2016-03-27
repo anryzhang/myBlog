@@ -1,0 +1,34 @@
+/**
+ * Created by ziyu on 16/3/27.
+ */
+
+.tab-box{
+  border:1px solid #eee;
+  margin-bottom:15px;
+  .tab-nav{
+    height:30px;
+    border-bottom:1px solid #eee;
+    li{
+      float: left;
+      padding:0 15px;
+      text-align: center;
+      border-right:1px solid #ccc;
+      line-height:30px;
+      cursor: pointer;
+      &.active{
+        border-bottom:2px solid #ccc;
+        height:28px;
+
+      }
+    }
+  }
+  .tab-content{
+    padding:10px;
+    .tab-pane{
+      display: none;
+      &.active{
+        display: block;
+      }
+    }
+  }
+}

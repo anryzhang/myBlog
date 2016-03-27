@@ -1,0 +1,97 @@
+/**
+ * Created by ziyu on 16/3/27.
+ */
+body {
+  padding: 20px;
+}
+
+/**
+ * Created by ziyu on 16/3/27.
+ */
+.switch-box {
+  position: relative;
+  width: 300px;
+  height: 100px;
+  overflow: hidden;
+  background: #e2e2e2;
+  margin-bottom: 20px;
+}
+
+.switch-box .switch-cont {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100px;
+  overflow: hidden;
+}
+
+.switch-box .switch-cont li {
+  width: 300px;
+  height: 100px;
+  float: left;
+  overflow: hidden;
+}
+
+.switch-box .switch-cont li:nth-child(1) {
+  background: green;
+}
+
+.switch-box .switch-cont li:nth-child(2) {
+  background: red;
+}
+
+.switch-box .switch-cont li:nth-child(3) {
+  background: #ff6464;
+}
+
+.switch-box .switch-cont li:nth-child(4) {
+  background: #64e464;
+}
+
+.switch-box .switch-btn {
+  position: absolute;
+  left: 50%;
+  margin-left: -50px;
+  bottom: 10px;
+}
+
+.switch-box .switch-btn i {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  margin: 0 5px;
+  border-radius: 50%;
+}
+
+.switch-box .switch-btn i.active {
+  border-color: #f60;
+}
+
+.switch-box .switch-next, .switch-box .switch-pre {
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  overflow: hidden;
+  text-align: center;
+  line-height: 22px;
+  font-size: 12px;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.3);
+  display: none;
+}
+
+.switch-box .switch-next {
+  right: 0;
+}
+
+.switch-box .switch-pre {
+  left: 0;
+}
+
+.switch-box:hover .switch-next, .switch-box:hover .switch-pre {
+  display: block;
+}
