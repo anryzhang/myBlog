@@ -56,11 +56,12 @@ const MyAjax = React.createClass({
 
             }
         }.bind(this));
+
     },
     onClick (e){
         e.preventDefault();
 
-        console.log(this.getDOMNode());
+
     },
     render() {
         var self = this;

@@ -34,6 +34,15 @@ import WebSite from './pages/WebSite.js';
 ReactDOM.render(<WebSite name="ziyu test" site="www.baidu.com"/>, document.getElementById('J_app3'));
 
 
+import MyForm from './components/FormTest.jsx';
+
+const myForm = <MyForm/>;
+var J_item = document.getElementsByClassName('J_item');
+for(let i = 0,len=J_item.length; i < len ; i++){
+    ReactDOM.render(myForm,J_item[i]);
+
+}
+
 
 
 import IndexModule2 from './pages/home2.jsx';

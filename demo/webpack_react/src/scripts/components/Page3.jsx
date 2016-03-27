@@ -4,6 +4,8 @@
 
 
 import React, {Component, PropTypes} from 'react'
+import ReactDOM from 'react-dom';
+import $ from 'jquery';
 
 class Page3 extends React.Component {
 
@@ -44,6 +46,14 @@ const Clicked = React.createClass({
             count:0
         };
     },
+    componentDidMount() {
+        let ele  = ReactDOM.findDOMNode(this);
+        $(ele).on('click',function(e){
+            "use strict";
+            console.log(e.currentTarget);
+        })
+    },
+
     onClick(event){
         console.log(event);
         this.setState({
