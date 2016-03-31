@@ -18,7 +18,7 @@ body {
 }
 
 .switch-box .switch-cont {
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
   height: 100px;
@@ -94,4 +94,73 @@ body {
 
 .switch-box:hover .switch-next, .switch-box:hover .switch-pre {
   display: block;
+}
+
+/**
+ * Created by ziyu on 16/3/30.
+ */
+#J_switch {
+  position: relative;
+  width: 300px;
+  height: 100px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+}
+
+#J_switch ul {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100px;
+}
+
+#J_switch ul li {
+  float: left;
+  width: 298px;
+  height: 100px;
+  border: 1px solid #666;
+}
+
+#J_switch .pre, #J_switch .next {
+  position: absolute;
+  top: 50%;
+  display: inline-block;
+  width: 10px;
+  height: 12px;
+  line-height: 12px;
+  font-size: 12px;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+}
+
+#J_switch .pre {
+  left: 0;
+}
+
+#J_switch .next {
+  right: 0;
+}
+
+.mousebox {
+  position: relative;
+}
+
+.mousebox .main {
+  width: 50px;
+  height: 50px;
+  background: #000;
+}
+
+.mousebox .sub {
+  position: absolute;
+  top: 0;
+  left: 55px;
+  width: 100px;
+  height: 100px;
+  background: green;
+  display: none;
 }

@@ -33,8 +33,13 @@ import $ from 'jquery';
             self.switchObj = $(self.settings.ele);
             self.settings.width = self.switchObj.width();
 
+
+
+
             let J_item = self.switchObj.find('.switch-cont li');
+
             self.settings.imgLen = J_item.length;
+
 
             self.switchObj.find(self.settings.list).width(self.settings.imgLen * self.settings.width);
 
@@ -101,11 +106,15 @@ import $ from 'jquery';
         autoChange(){
             const self = this;
             self.settings.autoChange = setInterval(function(){
+
+
+
                   if(self.settings.currentIndex < self.settings.imgLen - 1){
                       self.settings.currentIndex ++;
                   }else{
                       self.settings.currentIndex = 0;
                   }
+
                 self.changeTo(self.settings.currentIndex);
             },self.settings.autoTime)
 
@@ -114,10 +123,12 @@ import $ from 'jquery';
             const self = this;
             let goLeft = num * self.settings.width;
 
-            self.switchObj.find(self.settings.list).animate({
-                left:'-' + goLeft + 'px'
 
-            },500);
+
+            self.switchObj.find(self.settings.list).animate({
+                left: "-" +  goLeft + 'px'
+
+            },100);
 
             self.switchObj.find(self.settings.btn).find('i').removeClass(self.settings.btnAct).eq(num).addClass(self.settings.btnAct);
 

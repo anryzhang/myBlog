@@ -1,220 +1,312 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>图片轮播 jq(左右切换)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
     <style type="text/css">
-        body, div, ul, li, a, img {
+        #sidebar-menu {
+            /*目前要求宽度是238px,高度是332px，左边框+width正好238，以后需要可以修改*/
+            border-left: 1px solid #F93;
+            width: 237px;
+            /* height : 332px; */
             margin: 0;
             padding: 0;
+            background: #FFF7F0;
         }
 
-        ul, li {
+        #sidebar-menu > ul {
             list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
-        a {
+        #sidebar-menu > ul > li {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-bottom: 1px solid #FDEADB;
+            position: relative;
+        }
+
+        #sidebar-menu > ul > li.selected {
+            background: #FFF;
+            border-top: 1px solid #F93;
+            border-bottom: 1px solid #F93;
+        }
+
+        #sidebar-menu > ul > li.first {
+            border-top: 1px solid #F93;
+        }
+
+        #sidebar-menu > ul > li.last {
+            border-bottom: 1px solid #F93;
+        }
+
+        #sidebar-menu .menu-item {
+            background: #FFF7F0 no-repeat left center;
+            height: 32px; /**控制菜单中每行的宽度，下面还有两处需要修改**/
+            border-right: 1px solid #F93;
+            z-index: 10000;
+            position: relative;
+        }
+
+        #sidebar-menu > ul > li.selected .menu-item {
+            border-right: 1px solid #FFF;
+            background: #FFF no-repeat left center;
+        }
+
+        #sidebar-menu .menu-item span {
+            font-size: 13px;
+            font-weight: bold;
+            height: 32px;
+            line-height: 32px;
+            padding-left: 35px;
+            padding-top: 2px;
+            display: inline-block;
+        }
+
+        #sidebar-menu .menu-panel {
+            padding: 10px 20px;
+            display: none;
+            border: 1px solid #F93;
+            width: 560px;
+            position: absolute;
+            left: 236px;
+            top: -1px;
+            z-index: 5000;
+            min-height: 50px;
+            box-shadow: 1px 1px 4px #888888;
+        }
+
+        #sidebar-menu div.menu-panel.selected {
+            display: block;
+        }
+
+        /*Panel 里面的链接列表*/
+        #sidebar-menu div.menu-panel ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #sidebar-menu div.menu-panel ul li {
+            list-style: none;
+            padding: 5px 0px;
+            margin: 0;
+        }
+
+        #sidebar-menu div.menu-panel > ul > li > h2 {
+            margin: 0;
+            padding: 0;
+            padding-top: 2px;
+            font-size: 13px;
+            color: red;
+            float: left;
+            width: 60px;
+        }
+
+        #sidebar-menu div.menu-panel > ul > li > div.link-list {
+            float: left;
+            padding-left: 10px;
+            width: 450px;
+        }
+
+        #sidebar-menu div.menu-panel div.link-wrapper {
+            display: inline-block;
+            padding: 3px 0px;
+        }
+
+        #sidebar-menu div.menu-panel div.link-wrapper span {
+            font-size: 13px;
+            color: #888;
+            padding-right: 4px;
+        }
+
+        #sidebar-menu div.menu-panel div.link-list a {
+            font-size: 13px;
+            color: #888;
             text-decoration: none;
         }
 
-        #wrapper {
-            position: relative;
-            margin: 30px auto;
-            width: 400px;
-            height: 200px;
+        #sidebar-menu div.menu-panel div.link-list a:hover {
+            text-decoration: underline;
         }
 
-        #banner {
-            position: relative;
-            width: 400px;
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .imgList {
-            position: relative;
-            width: 2000px;
-            height: 200px;
-            z-index: 10;
-            overflow: hidden;
-        }
-
-        .imgList li {
-            float: left;
-            display: inline;
-        }
-
-        #prev,
-        #next {
-            position: absolute;
-            top: 80px;
-            z-index: 20;
-            cursor: pointer;
-            opacity: 0.2;
-            filter: alpha(opacity=20);
-        }
-
-        #prev {
-            left: 10px;
-        }
-
-        #next {
-            right: 10px;
-        }
-
-        #prev:hover,
-        #next:hover {
-            opacity: 0.5;
-            filter: alpha(opacity=50);
-        }
-
-        .bg {
-            position: absolute;
-            bottom: 0;
-            width: 400px;
-            height: 40px;
-            z-index: 20;
-            opacity: 0.4;
-            filter: alpha(opacity=40);
-            background: black;
-        }
-
-        .infoList {
-            position: absolute;
-            left: 10px;
-            bottom: 10px;
-            z-index: 30;
-        }
-
-        .infoList li {
-            display: none;
-        }
-
-        .infoList .infoOn {
-            display: inline;
-            color: white;
-        }
-
-        .indexList {
-            position: absolute;
-            right: 10px;
-            bottom: 5px;
-            z-index: 30;
-        }
-
-        .indexList li {
-            float: left;
-            margin-right: 5px;
-            padding: 2px 4px;
-            border: 2px solid black;
-            background: grey;
-            cursor: pointer;
-        }
-
-        .indexList .indexOn {
-            background: red;
-            font-weight: bold;
-            color: white;
+        #sidebar-menu div.clear {
+            clear: both;
+            height: 0;
+            line-height: 0;
         }
     </style>
+    <script type="text/javascript">
+        $(function () {
+            $("#sidebar-menu > ul > li").hover(function () {
+                $(this).addClass("selected");
+                $(".menu-panel", this).addClass("selected");
+                var bgImg = $(".menu-item", this).css("background-image");
+                bgImg = bgImg.replace(".", "-hover.");
+                $(".menu-item", this).css("background-image", bgImg);
+            }, function () {
+                $(this).removeClass("selected");
+                $(".menu-panel", this).removeClass("selected");
+                var bgImg = $(".menu-item", this).css("background-image");
+                bgImg = bgImg.replace("-hover.", ".");
+                $(".menu-item", this).css("background-image", bgImg);
+            });
+        });
+    </script>
+    <!--[if IE 7]>
+    <style type="text/css">
+        #sidebar-menu div.menu-panel div.link-wrapper {
+            display: inline;
+            zoom: 1;
+        }
+    </style>
+    <![endif]-->
+    <title>Side bar demo</title>
 </head>
 <body>
-<div id="wrapper"><!-- 最外层部分 -->
-    <div id="banner"><!-- 轮播部分 -->
-        <ul class="imgList"><!-- 图片部分 -->
-            <li><a href="#"><img src="./img/test1.jpg" width="400px" height="200px" alt="puss in boots1"></a></li>
-            <li><a href="#"><img src="./img/test2.jpg" width="400px" height="200px" alt="puss in boots2"></a></li>
-            <li><a href="#"><img src="./img/test3.jpg" width="400px" height="200px" alt="puss in boots3"></a></li>
-            <li><a href="#"><img src="./img/test4.jpg" width="400px" height="200px" alt="puss in boots4"></a></li>
-            <li><a href="#"><img src="./img/test5.jpg" width="400px" height="200px" alt="puss in boots5"></a></li>
-        </ul>
-        <img src="./img/prev.png" width="20px" height="40px" id="prev">
-        <img src="./img/next.png" width="20px" height="40px" id="next">
-        <!--<div class="bg"></div> &lt;!&ndash; 图片底部背景层部分&ndash;&gt;-->
-        <ul class="infoList"><!-- 图片左下角文字信息部分 -->
-            <li class="infoOn">puss in boots1</li>
-            <li>puss in boots2</li>
-            <li>puss in boots3</li>
-            <li>puss in boots4</li>
-            <li>puss in boots5</li>
-        </ul>
-        <ul class="indexList"><!-- 图片右下角序号部分 -->
-            <li class="indexOn">1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-        </ul>
-    </div>
+<div id="sidebar-menu">
+    <ul>
+        <li class="first">
+            <div class="menu-item">
+                <span>图书音像</span>
+            </div>
+            <div class="menu-panel">
+                <ul>
+                    <li>
+                        <h2>高考图书</h2>
+                        <div class="link-list">
+                            <div class="link-wrapper"><span>|</span><a href="#">物理习题</a></div>
+                            <div class="link-wrapper"><span>|</span><a href="#">生物</a></div>
+                            <div class="link-wrapper"><span>|</span><a href="#">高考复习题</a></div>
+                            <div class="link-wrapper"><span>|</span><a href="#">语文作文大全</a></div>
+                            <div class="link-wrapper"><span>|</span><a href="#">政治时事</a></div>
+                            <div class="link-wrapper"><span>|</span><a href="#">历年高考真题解析与答案</a></div>
+                            <div class="link-wrapper"><span>|</span><a href="#">考试题</a></div>
+                            <div class="link-wrapper"><span>|</span><a href="#">化学实验测试</a></div>
+                            <div class="link-wrapper"><span>|</span><a href="#">生物测试</a></div>
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <h2>专辑</h2>
+                        <div class="link-list">
+                            <div class="link-wrapper"><span>|</span><a href="#">郑智化专辑</a></div>
+                            <div class="link-wrapper"><span>|</span><a href="#">台湾伍佰</a></div>
+                            <div class="link-wrapper"><span>|</span><a href="#">大陆张含韵</a></div>
+                            <div class="link-wrapper"><span>|</span><a href="#">刘德华</a></div>
+                            <div class="link-wrapper"><span>|</span><a href="#">成龙</a></div>
+                            <div class="link-wrapper"><span>|</span><a href="#">王菲</a></div>
+                            <div class="link-wrapper"><span>|</span><a href="#">最新歌曲排行榜</a></div>
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <h2>生活图书</h2>
+                        <div class="link-list">
+                            <div class="link-wrapper"><span>|</span><a href="#">领悟人生</a></div>
+                            <div class="link-wrapper"><span>|</span><a href="#">天文地理</a></div>
+                            <div class="link-wrapper"><span>|</span><a href="#">旅游百科</a></div>
+                            <div class="link-wrapper"><span>|</span><a href="#">炒菜一本通</a></div>
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <div class="menu-item" style="background-image : url(images/tubiao.jpg);">
+                <span>生活类</span>
+            </div>
+            <div class="menu-panel">
+                <ul>
+                    <li>
+                        <h2>炒菜宝典</h2>
+                        <div class="link-list">
+                            <div class="link-wrapper"><span>|</span><a href="#">领悟人生</a></div>
+                            <div class="link-wrapper"><span>|</span><a href="#">天文地理</a></div>
+                            <div class="link-wrapper"><span>|</span><a href="#">旅游百科</a></div>
+                            <div class="link-wrapper"><span>|</span><a href="#">炒菜一本通</a></div>
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <div class="menu-item">
+                <span>商品分类</span>
+            </div>
+            <div class="menu-panel">
+                商品分类内容......
+            </div>
+        </li>
+        <li>
+            <div class="menu-item">
+                <span>商品分类</span>
+            </div>
+            <div class="menu-panel">
+                商品分类内容......
+            </div>
+        </li>
+        <li>
+            <div class="menu-item">
+                <span>商品分类</span>
+            </div>
+            <div class="menu-panel">
+                商品分类内容......
+            </div>
+        </li>
+        <li>
+            <div class="menu-item">
+                <span>商品分类</span>
+            </div>
+            <div class="menu-panel">
+                商品分类内容......
+            </div>
+        </li>
+        <li>
+            <div class="menu-item">
+                <span>商品分类</span>
+            </div>
+            <div class="menu-panel">
+                商品分类内容......
+            </div>
+        </li>
+        <li>
+            <div class="menu-item">
+                <span>商品分类</span>
+            </div>
+            <div class="menu-panel">
+                商品分类内容......
+            </div>
+        </li>
+        <li>
+            <div class="menu-item">
+                <span>商品分类</span>
+            </div>
+            <div class="menu-panel">
+                商品分类内容......
+            </div>
+        </li>
+        <li>
+            <div class="menu-item">
+                <span>商品分类</span>
+            </div>
+            <div class="menu-panel">
+                商品分类内容......
+            </div>
+        </li>
+        <li class="last">
+            <div class="menu-item">
+                <span>商品分类</span>
+            </div>
+            <div class="menu-panel">
+                商品分类内容......
+            </div>
+        </li>
+    </ul>
 </div>
-<script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
-<script type="text/javascript">
-    var curIndex = 0, //当前index
-            imgLen = $(".imgList li").length; //图片总数
-    // 定时器自动变换2.5秒每次
-    var autoChange = setInterval(function () {
-        if (curIndex < imgLen - 1) {
-            curIndex++;
-        } else {
-            curIndex = 0;
-        }
-        //调用变换处理函数
-        changeTo(curIndex);
-    }, 2500);
-    //左箭头滑入滑出事件处理
-    $("#prev").hover(function () {
-        //滑入清除定时器
-        clearInterval(autoChange);
-    }, function () {
-        //滑出则重置定时器
-        autoChangeAgain();
-    });
-    //左箭头点击处理
-    $("#prev").click(function () {
-        //根据curIndex进行上一个图片处理
-        curIndex = (curIndex > 0) ? (--curIndex) : (imgLen - 1);
-        changeTo(curIndex);
-    });
-    //右箭头滑入滑出事件处理
-    $("#next").hover(function () {
-        //滑入清除定时器
-        clearInterval(autoChange);
-    }, function () {
-        //滑出则重置定时器
-        autoChangeAgain();
-    });
-    //右箭头点击处理
-    $("#next").click(function () {
-        curIndex = (curIndex < imgLen - 1) ? (++curIndex) : 0;
-        changeTo(curIndex);
-    });
-    //对右下角按钮index进行事件绑定处理等
-    $(".indexList").find("li").each(function (item) {
-        $(this).hover(function () {
-            clearInterval(autoChange);
-            changeTo(item);
-            curIndex = item;
-        }, function () {
-            autoChangeAgain();
-        });
-    });
-    //清除定时器时候的重置定时器--封装
-    function autoChangeAgain() {
-        autoChange = setInterval(function () {
-            if (curIndex < imgLen - 1) {
-                curIndex++;
-            } else {
-                curIndex = 0;
-            }
-            //调用变换处理函数
-            changeTo(curIndex);
-        }, 2500);
-    }
-    function changeTo(num) {
-        var goLeft = num * 400;
-        $(".imgList").animate({left: "-" + goLeft + "px"}, 500);
-        $(".infoList").find("li").removeClass("infoOn").eq(num).addClass("infoOn");
-        $(".indexList").find("li").removeClass("indexOn").eq(num).addClass("indexOn");
-    }
-</script>
 </body>
 </html>

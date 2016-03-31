@@ -19,3 +19,9 @@ $.switchBox({
 import tabSelect from './plugins/tabSelect';
 
 console.log(tabSelect('.J_IT'));
+
+//test array from
+
+import ArrayFrom from './test/es6_arryfrom';
+
+console.log(ArrayFrom);
