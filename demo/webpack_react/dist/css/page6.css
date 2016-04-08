@@ -1,0 +1,140 @@
+/**
+ * Created by ziyu on 16/4/1.
+ */
+.search-header-bar {
+  height: 50px;
+  padding: 20px;
+}
+
+.search-header-bar .return-page {
+  width: 40px;
+  height: 40px;
+  background: #ddd no-repeat center center;
+  float: left;
+  position: relative;
+  margin-right: -40px;
+  margin-top: 5px;
+}
+
+.search-header-bar .search-box {
+  width: 100%;
+  float: left;
+}
+
+.search-header-bar .search-box .cont {
+  position: relative;
+  margin-left: 60px;
+  height: 50px;
+  background: #f0f0f0;
+  overflow: hidden;
+  border-radius: 25px;
+}
+
+.search-header-bar .search-box .cont .search-btn-lf {
+  position: relative;
+  float: left;
+  width: 35px;
+  height: 50px;
+  margin-left: 20px;
+  margin-right: -55px;
+  background: #ccc no-repeat center center;
+}
+
+.search-header-bar .search-box .cont .input-box {
+  float: left;
+  width: 100%;
+}
+
+.search-header-bar .search-box .cont .input-box .input-cont {
+  margin-left: 55px;
+  margin-right: 140px;
+  padding: 0 6px;
+}
+
+.search-header-bar .search-box .cont .input-box .input-cont input {
+  display: block;
+  width: 100%;
+  font-size: 24px;
+  height: 50px;
+  line-height: 50px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.search-header-bar .search-box .cont .del-input {
+  position: absolute;
+  top: 10px;
+  right: 110px;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  background: red no-repeat center center;
+  border: none;
+}
+
+.search-header-bar .search-box .cont .search-btn-rf {
+  position: relative;
+  float: right;
+  width: 98px;
+  height: 50px;
+  margin-left: -98px;
+  text-align: center;
+  font-size: 28px;
+  color: #fff;
+  line-height: 50px;
+  background: #f60;
+  border: none;
+}
+
+.history-bar {
+  padding: 30px 20px;
+}
+
+.history-bar .title {
+  font-size: 24px;
+  color: #999;
+}
+
+.history-bar .search-history-list {
+  max-height: 360px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.history-bar .search-history-list li {
+  display: block;
+  height: 80px;
+  border-bottom: 1px solid #ddd;
+  line-height: 80px;
+}
+
+.history-bar .search-history-list li:first-child {
+  border-top: 1px solid #ddd;
+  margin-top: 30px;
+}
+
+.history-bar .search-history-list li.tips {
+  text-align: center;
+  color: #999;
+}
+
+.history-bar .search-history-list li a {
+  font-size: 24px;
+  color: #666;
+  text-decoration: none;
+}
+
+.history-bar .clean-history-btn {
+  font-size: 24px;
+  color: #999;
+  width: 165px;
+  height: 50px;
+  overflow: hidden;
+  text-align: center;
+  line-height: 50px;
+  margin: 80px auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

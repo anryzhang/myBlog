@@ -1,0 +1,141 @@
+/**
+ * Created by ziyu on 16/4/1.
+ */
+@function px2rem( $px ) {
+  //@return $px*160/$designWidth/20 + rem;
+  @return $px + px;
+}
+
+@function rem2px($px) {
+  @return $px + px;
+}
+
+
+.search-header-bar{
+  height: px2rem(50);
+  padding: px2rem(20);
+  .return-page{
+    width: px2rem(40);
+    height: px2rem(40);
+    background: #ddd no-repeat center center;
+    float: left;
+    position: relative;
+    margin-right: - px2rem(40);
+    margin-top: px2rem(5);
+  }
+  .search-box{
+    width: 100%;
+    float: left;
+    .cont{
+      position: relative;
+      margin-left: px2rem(60);
+      height: px2rem(50);
+      background: #f0f0f0;
+      overflow: hidden;
+      border-radius: px2rem(25);
+      .search-btn-lf{
+        position: relative;
+        float: left;
+        width: px2rem(35);
+        height: px2rem(50);
+        margin-left: px2rem(20);
+        margin-right: - px2rem(55);
+        background: #ccc no-repeat center center;
+
+      }
+      .input-box{
+        float: left;
+        width: 100%;
+        .input-cont{
+          margin-left: px2rem(55);
+          margin-right: px2rem(140);
+          padding: 0 px2rem(6);
+          input{
+
+            display: block;
+            width: 100%;
+            font-size: rem2px(24);
+            height: px2rem(50);
+            line-height: px2rem(50);
+            overflow: hidden;
+            border: none;
+            background: transparent;
+            outline: none;
+
+          }
+        }
+
+      }
+      .del-input{
+        position: absolute;
+        top: px2rem(10);
+        right: px2rem(110);
+        width: px2rem(30);
+        height: px2rem(30);
+        overflow: hidden;
+        background: red no-repeat center center;
+        border: none;
+
+      }
+
+      .search-btn-rf{
+        position: relative;
+        float: right;
+        width: px2rem(98);
+        height: px2rem(50) ;
+        margin-left: - px2rem(98);
+        text-align: center;
+        font-size: rem2px(28);
+        color: #fff;
+        line-height: px2rem(50);
+        background: #f60;
+        border: none;
+      }
+
+    }
+  }
+}
+
+.history-bar{
+  padding: px2rem(30) px2rem(20);
+  .title{
+    font-size: rem2px(24);
+    color: #999;
+  }
+  .search-history-list{
+    max-height: px2rem(360);
+    overflow-x: hidden;
+    overflow-y: auto;
+    li{
+      display: block;
+      height: px2rem(80);
+      border-bottom: 1px solid #ddd;
+      line-height: px2rem(80);
+      &:first-child{
+        border-top: 1px solid #ddd;
+        margin-top: px2rem(30);
+      }
+      &.tips{
+        text-align: center;
+        color: #999;
+      }
+      a{
+        font-size: rem2px(24);
+        color: #666;
+        text-decoration: none;
+      }
+    }
+  }
+  .clean-history-btn{
+    font-size: px2rem(24);
+    color: #999;
+    width: px2rem(165);
+    height: px2rem(50);
+    overflow: hidden;
+    text-align: center;
+    line-height: px2rem(50);
+    margin: px2rem(80) auto;
+    border: 1px solid #ccc;
+    border-radius: px2rem(4);
+  }
+}

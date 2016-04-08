@@ -41,13 +41,13 @@ var autoprefixerBrowsers = [
 
 
 gulp.task('scripts', function () {
-    var entry = webpackConfig.entry;
-    for(var obj in entry){
-        gulp.src(entry[obj])
+    var entrys = webpackConfig.entry;
+
+    for(var obj in entrys){
+        gulp.src(entrys[obj])
             .pipe($.webpack(webpackConfig))
             .pipe(isProduction ? $.uglify() : $.util.noop())
             .pipe(gulp.dest(dist + 'js/'))
-            .pipe($.size({title: 'js'}))
             .pipe(connect.reload())
             .pipe(livereload());
         return ;
