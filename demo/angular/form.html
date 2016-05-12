@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/angular/angular.js"></script>
+</head>
+<body ng-app="myApp">
+<div >
+    <form name="signup_form"
+          novalidate
+          ng-submit="signupForm()"
+          ng-controller="signupController">
+        <fieldset>
+            <legend>Signup</legend>
+            <div class="row">
+                <div class="large-12 columns">
+                    <label>Your name</label>
+                    <input type="text"
+                           placeholder="Name"
+                           name="name"
+                           ng-model="signup.name"
+                           ng-minlength="3"
+                           ng-maxlength="20" required />
+                    <div class="error"
+                         ng-show="signup_form.name.$dirty && signup_form.name.$invalid && signup_form.submitted">
+                        <small class="error"
+                               ng-show="signup_form.name.$error.required"> 9
+                            Your name is required.
+                        </small>
+                        <small class="error"
+                               ng-show="signup_form.name.$error.minlength">
+                            Your name is required to be at least 3 characters
+                            10
+                        </small>
+                        <small class="error" 11
+                               ng-show="signup_form.name.$error.maxlength">
+                            Your name cannot be longer than 20 characters
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" >Submit</button>
+        </fieldset>
+    </form>
+</div>
+<script>
+    var myApp = angular.module('myApp', [], function () {
+
+    });
+    myApp.controller('signupController',function($scope){
+        $scope.submitted = false;
+        $scope.signupForm = function(){
+            if($scope.signup_form.$valid){
+
+            }else{
+                $scope.signup_form.submitted = true;
+            }
+        }
+
+    });
+//    myApp.directive('ensureUnique', function($http) {
+//        return {
+//            require: 'ngModel',
+//            link: function(scope, ele, attrs, c) {
+//                scope.$watch(attrs.ngModel, function(n) {
+//                    if (!n) return;
+//                    $http({
+//                        method: 'POST',
+//                        url: '/api/check/' + attrs.ensureUnique,
+//                        data: {
+//                            field: attrs.ensureUnique,
+//                            value: scope.ngModel
+//                        }
+//                    }).success(function(data) {
+//                        c.$setValidity('unique', data.isUnique);
+//                    }).error(function(data) {
+//                        c.$setValidity('unique', false);
+//                    });
+//                }); }
+//        }; });
+
+</script>
+</body>
+</html>

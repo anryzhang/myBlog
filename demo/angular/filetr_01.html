@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/angular/angular.js"></script>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="myCtr">
+        <p>{{ 123 | currency:'#' }}</p>
+        <p>{{ timeStr | date:'yyyy/MM/dd hh:mm:ss' }}</p>
+    </div>
+    <script>
+        var myApp = angular.module('myApp', []);
+        myApp.controller('myCtr',function($scope,$filter){
+            $scope.name = $filter('lowercase')('Ari');
+            $scope.timeStr = (new Date()).getTime();
+        });
+    </script>
+</body>
+</html>
