@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function getRGB(val,opactiy) {
+        if(!val){
+            return false;
+        }
+
+        if(typeof val !== 'string'){
+            return false;
+        }
+
+        if(val.length != 7 || val.indexOf('#') != 0){
+            alert('请输入格式为:#dddddd');
+            return false;
+        }
+
+        var _obj = val.slice(1);
+
+        var _r = parseInt(_obj.slice(0,2),16),
+                _g = parseInt(_obj.slice(2,4),16),
+                _b = parseInt(_obj.slice(4,7),16);
+
+        var _objVal = '';
+        if(!opactiy){
+            _objVal = "rgb(" + _r + ',' + _g + ',' + _b + ')';
+        }else{
+            _objVal = "rgba(" + _r + ',' + _g + ',' + _b +  ',' + opactiy + ')';
+        }
+        console.log(_objVal);
+        document.body.style.backgroundColor =  _objVal;
+
+    }
+
+    getRGB("#aa0000");
+
+    setTimeout(function(){
+        getRGB('#aaFF00',0.5);
+    },3000);
+
+</script>
+</body>
+</html>

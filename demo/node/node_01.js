@@ -11,6 +11,7 @@ exports.alertJson = function(){
 }
 
 
+
 var i = 0;
 function count(){
 	return ++i;
@@ -21,3 +22,4 @@ exports.count = count;
 module.rs1 = function(){
 	console.log('test');
 }
+

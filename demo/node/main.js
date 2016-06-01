@@ -18,4 +18,4 @@ $ = cheerio.load('<h2 class="title">hello world</h2>');
 $('h2.title').text('hello there');
 $('h2').addClass('welcome');
 $.html();
-console.log($.html())
+console.log($.html());
