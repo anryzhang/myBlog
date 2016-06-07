@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型链继承</title>
+</head>
+<body>
+<script>
+    function Shape(){
+        this.name = 'shape';
+        this.toString = function () {
+            return this.name;
+        }
+
+    }
+
+    function TwoDShape(){
+        this.name =  '2D shape';
+    }
+
+    function Triangle(side, height){
+        this.name  = 'Triangle';
+        this.side = side;
+        this.height = height;
+        this.getArea = function () {
+            return this.side * this.height /2;
+        }
+    }
+
+    TwoDShape.prototype = new Shape();
+    TwoDShape.prototype.constructor = TwoDShape;
+    Triangle.prototype = new TwoDShape();
+    Triangle.prototype.constructor = Triangle;
+
+
+    var _tri = new Triangle(2,5);
+
+    //通过 instanceof 操作符,可以验证 _tri 对象同时是上述三个构造器的实例
+     console.log(_tri instanceof Shape);
+     console.log(_tri instanceof TwoDShape);
+     console.log(_tri instanceof Triangle);
+
+</script>
+</body>
+</html>
