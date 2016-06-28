@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+    }
+    .test{
+        background: green;
+        position: absolute;
+        left: 100px;
+        top: 100px;
+        width: 100%;
+        height: 100%;
+
+    }
+
+</style>
+<svg class="test">
+   <path d="M150 0 L75 200 L225 200 Z" style="stroke:#fff; fill-opacity: 0; stroke-width: 5px"></path>
+
+    <defs>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color: rgb(255,255,0); stop-opacity: 1"></stop>
+            <stop offset="100%" style="stop-color: rgb(255,0,0); stop-opacity: 1"></stop>
+        </linearGradient>
+    </defs>
+    <ellipse rx="85" ry="55" cx="200" cy="70" fill="url(#grad1)"></ellipse>
+
+
+    <defs>
+        <radialGradient id="grad2" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+            <stop offset="0%" style="stop-color:rgb(255,255,255);
+      stop-opacity:0" />
+            <stop offset="100%" style="stop-color:rgb(0,0,255);stop-opacity:1" />
+        </radialGradient>
+    </defs>
+    <ellipse cx="300" cy="170" rx="85" ry="55" fill="url(#grad2)" />
+</svg>
+</body>
+</html>

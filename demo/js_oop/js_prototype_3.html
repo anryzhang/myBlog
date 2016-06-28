@@ -64,6 +64,15 @@
 
     }
 
+    var A = function () {};
+    var B = function () {};
+    A.prototype.stuff = [1,2,3];
+    A.prototype.name = 'a';
+
+    Extend(B, A);
+
+    var b  = new B();
+
 </script>
 </body>
 </html>
