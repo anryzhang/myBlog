@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="../../js/jquery.js"></script>
+<script src="js/fileUpload.js"></script>
+<body>
+
+<!--h5 formData 上传 start-->
+<form enctype="multipart/form-data" method="post" name="fileinfo">
+    <label for=""> file</label>
+    <input type="file" id="fileImage" name="file" multiple>
+    <div id="output"></div>
+
+</form>
+
+<script>
+    var fileupload = new fileUpload({
+        fileInput:$("#fileImage").get(0),
+        url:'upload.php',
+        onSelect:function(file){
+            console.log(file);
+        },
+        onProgress:function (data) {
+            console.log(data);
+        },
+        onSuccess:function (data) {
+            console.log(data);
+        }
+
+    });
+    console.log(fileupload);
+</script>
+<!--h5 formData 上传 end-->
+<hr>
+<!--跨域上传start-->
+<iframe name="demoIframe" style="display: none;"></iframe>
+<form target="demoIframe" action="upload.php" method="post" enctype="multipart/form-data">
+    <input class="filename" type="file" name="fileLabel">
+    <input type="submit" value="提交">
+</form>
+
+<script>
+    $(function(){
+        $('iframe').on('load',function(){
+            var responseText = $('iframe')[0].contentDocument.body.textContent;
+            var responseData = JSON.parse(responseText) || {};
+            if(responseData.isSuccess == true || responseData.code == 200){
+                //success
+            }else{
+                //error
+            }
+        });
+    });
+</script>
+<!--跨域上传end-->
+
+<hr>
+<!--jquery 上传 start-->
+<input type="file"  id="upfile">
+<input type="button" id="upJquery" value="上传">
+<script>
+    $(function(){
+        $('#upJquery').on('click',function(){
+            var fd = new FormData();
+            fd.append('upload',1);
+            fd.append('upfile',$('#upfile').get(0).files[0]);
+            $.ajax({
+                url:'test.php',
+                type:'post',
+                processData:false,
+                contentType: false,
+                data:fd,
+                success:function(d){
+                    console.log(d);
+                }
+            });
+        });
+    });
+</script>
+<!--jquery 上传 end-->
+</body>
+</html>

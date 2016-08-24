@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="after"></div>
+
+<style>
+    .after{
+        width: 50px;
+        height: 50px;
+        border-radius:50%;
+        border:5px solid #333;
+        position: relative;
+
+    }
+    .after:before{
+        content:'放大';
+        position: absolute;
+        left: 0;
+        top: 0;
+        line-height: 50px;
+        text-align: center;
+        width: 50px;
+        height: 50px;
+    }
+    .after:after{
+        content: '';
+        display: block;
+        width: 8px;
+        height: 60px;
+        border-radius: 5px;
+        background: #333;
+        position: absolute;
+        right: -22px;
+        top: 38px;
+        transform: rotate(-45deg);
+    }
+
+</style>
+
+<div class="attr" data-title="hello,world">attr 和 content 实现hove title</div>
+<style>
+    .attr{
+        position: relative;
+        left:100px;
+        top: 100px;
+    }
+    .attr:hover::after{
+        content: attr(data-title);
+        display: inline-block;
+        padding:10px 14px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        position: absolute;
+        top: -40px;
+        left:-30px;
+        background: #fff;
+    }
+</style>
+
+
+</body>
+</html>
