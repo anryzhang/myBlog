@@ -1,7 +1,7 @@
 ---
 layout: post
 title: this 的值到底是什么？
-description: javascript js this
+description: javascript js this.
 keywords: this.
 ---
 
