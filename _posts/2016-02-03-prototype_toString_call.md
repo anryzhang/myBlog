@@ -57,7 +57,7 @@ keywords: prototype call
 			由于 JavaScript 中一切都是对象，任何都不例外，对所有值类型应用 Object.prototype.toString.call() 方法结果如下：
 
 		</p>
-		<pre>
+		<code>
 			console.log(Object.prototype.toString.call(123)) //[object Number]
 			console.log(Object.prototype.toString.call('123')) //[object String]
 			console.log(Object.prototype.toString.call(undefined)) //[object Undefined]
@@ -65,7 +65,7 @@ keywords: prototype call
 			console.log(Object.prototype.toString.call({})) //[object Object]
 			console.log(Object.prototype.toString.call([])) //[object Array]
 			console.log(Object.prototype.toString.call(function(){})) //[object Function]
-		</pre>
+		</code>
 
 		所有类型都会得到不同的字符串，几乎完美。
 
