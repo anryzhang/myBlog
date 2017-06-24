@@ -15,6 +15,7 @@
   var previousUnderscore = root._;
 
   // Save bytes in the minified (but not gzipped) version:
+    //将字节保存在缩小(但不是gzip)版本:
   var ArrayProto = Array.prototype, ObjProto = Object.prototype, FuncProto = Function.prototype;
 
   // Create quick reference variables for speed access to core prototypes.
