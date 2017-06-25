@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    var names = ['ts','Ma','ms'];
+
+    var _sort = names.sort(function (a,b) {
+        return a.localeCompare(b);
+
+    })
+
+    console.log(_sort);
+
+    var a = [2,3,1,4];
+    var b = a.reduce(function (pre,cur,index) {
+        return pre+cur;
+    })
+    console.log(b);
+
+</script>
+</body>
+</html>

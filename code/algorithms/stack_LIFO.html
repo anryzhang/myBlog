@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>stack</title>
+</head>
+<body>
+
+栈 后进先出(last in first out)
+
+<script src="Stack.js"></script>
+<script>
+
+    var stack = new Stack();
+    console.log(stack);
+
+    //进制转换
+
+    function deBy2(num) {
+        var remStack = new Stack();
+        var rem;
+        var bStr='';
+
+        while(num > 0){
+            rem = Math.floor(num % 2);
+            remStack.push(rem);
+            num = Math.floor(num/2);
+        }
+        while(!remStack.isEmpty()){
+            bStr += remStack.pop().toString();
+        }
+        return bStr;
+    }
+
+    function anryBy(num,base) {
+        var remStack = new Stack();
+        var rem,
+            baseStr='',
+            digits= '0123456789ABCDEF';
+        while (num>0){
+            rem = Math.floor(num%base);
+            remStack.push(rem);
+            num = Math.floor(num/base);
+        }
+        while(!remStack.isEmpty()){
+            baseStr += digits[remStack.pop()];
+        }
+        return baseStr;
+    }
+
+</script>
+</body>
+</html>
