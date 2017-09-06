@@ -1,0 +1,19 @@
+{
+  "name": "myblog",
+  "version": "1.0.0",
+  "description": "<a href=\"http://anryzhang.github.io/myBlog/\" target=\"_blank\" title=\"个人博客\">个人博客</a>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anryzhang/myBlog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anryzhang/myBlog/issues"
+  },
+  "homepage": "https://github.com/anryzhang/myBlog#readme"
+}
