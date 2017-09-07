@@ -14,9 +14,14 @@ const consolidate = require('consolidate');
 const expressRouter = require('express-router');
 
 const app = express();
-
+app.use(express.static(__dirname + '/static'));
+app.use(express.static(__dirname + '/dist'));
 
 (function () {
+    if(!!process.env.ISDEV){
+        console.log(1111);
+        return false;
+    }
     let webpack = require('webpack');
 
     let webpackConfig = require('./webpack.config');
@@ -45,7 +50,7 @@ app.use(upload.any());
 
 app.use(cookieParser());
 
-(function () {
+(function(){
     let keys = [];
     for(let i = 0;i < 10000;i++){
         keys[i] = 'a_' + Math.random();
@@ -55,6 +60,7 @@ app.use(cookieParser());
         keys:keys,
         maxAge: 20*60*1000
     }));
+
 })();
 
 
@@ -74,10 +80,9 @@ app.get('/user/:id',function (req,res) {
 })
 
 let admin = require('./route/admin/login');
-app.use('/admin',admin());
+app.use('/admin',admin);
 
-app.use(express.static(__dirname + '/static'));
-app.use(express.static(__dirname + '/dist'));
+
 
 app.listen(8090,function () {
     console.log('http://localhost:8090');
