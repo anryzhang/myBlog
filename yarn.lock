@@ -1787,10 +1787,6 @@ expand-range@^1.8.1:
   dependencies:
     fill-range "^2.1.0"
 
-express-router@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.npmjs.org/express-router/-/express-router-0.0.1.tgz#9351704deb2e7cadd765a6692d5c09936d790b25"
-
 express-static@^1.2.4:
   version "1.2.4"
   resolved "https://registry.npmjs.org/express-static/-/express-static-1.2.4.tgz#effe53be83b1372e2c0e81e68aa8ae55af76f208"

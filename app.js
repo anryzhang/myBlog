@@ -11,7 +11,7 @@ const cookieParser = require('cookie-parser');
 const multer = require('multer');
 const cookieSession = require('cookie-session');
 const consolidate = require('consolidate');
-const expressRouter = require('express-router');
+
 
 const app = express();
 app.use(express.static(__dirname + '/static'));
