@@ -4,3 +4,4 @@ _site
 demo/*/node_modules/
 demo/*/spm_modules/
 node_modules
+dist/
