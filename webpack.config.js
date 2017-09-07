@@ -4,7 +4,7 @@
 "use strict";
 const path = require('path');
 const webpack = require('webpack');
-let HotMiddleWareConfig = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000'
+
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const common = {
@@ -14,18 +14,19 @@ const common = {
 };
 const ISDEV = process.env.ISDEV?true:false;
 // console.log(ISDEV);
-
+let HotMiddleWareConfig ='webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000';
 let extractCss = new ExtractTextPlugin('[name].build.css');
 
 const config = {
-    entry: {
-        admin_common:[
+    entry:  {
+        admin_common:ISDEV?[
             HotMiddleWareConfig,
             common.src + 'common/admon_common.js'
-        ],
-        admin:[HotMiddleWareConfig,
+        ]:[common.src + 'common/admon_common.js'],
+        admin:ISDEV?[
+            HotMiddleWareConfig,
             common.src + 'admin/js/common.js'
-        ]
+        ]:[common.src + 'admin/js/common.js']
     },
     output: {
         filename: './[name].build.js',
@@ -80,12 +81,12 @@ const config = {
 
     ]:[
         new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
+        // new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         extractCss
     ]
 };
 
-console.log(config);
+// console.log(config);
 
 module.exports = config;

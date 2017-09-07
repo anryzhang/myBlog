@@ -6,12 +6,11 @@ require('./../css/common.scss');
 
 let $ = require('jquery');
 
-console.log($);
+// console.log($);
 
 (function ($) {
     $(function () {
         $('body').css('color','green');
-
         $(document).on('click',(e)=>{
             console.log(e);
         })

@@ -18,15 +18,13 @@ app.use(express.static(__dirname + '/static'));
 app.use(express.static(__dirname + '/dist'));
 
 (function () {
-    if(!!process.env.ISDEV){
-        console.log(1111);
-        return false;
-    }
+
+
     let webpack = require('webpack');
 
     let webpackConfig = require('./webpack.config');
     let compiler = webpack(webpackConfig);
-    console.log(compiler);
+    // console.log(compiler);
     app.use(require('webpack-dev-middleware')(compiler,{
         noInfo: true, publicPath:webpackConfig.output.publicPath
     }));
