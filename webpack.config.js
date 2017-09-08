@@ -59,17 +59,14 @@ const config = {
             },
             {
                 test:/\.js$/,
-                include:[
-                    path.resolve(__dirname,'/src'),
-
-                ],
-                use:[
+                exclude:'/node_modules/',
+                use: [
                     {
-                        loader:'babel-loader',
+                        loader: 'babel-loader',
                         options: {
-                            presets:['es2015']
-                        }
-                    }
+                            presets: ['es2015'],
+                        },
+                    },
                 ]
             }
         ]
@@ -81,12 +78,11 @@ const config = {
 
     ]:[
         new webpack.optimize.OccurrenceOrderPlugin(),
-        // new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         extractCss
     ]
 };
 
-// console.log(config);
+// console.log(JSON.stringify(config,null,2));
 
 module.exports = config;

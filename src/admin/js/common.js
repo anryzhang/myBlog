@@ -8,11 +8,20 @@ let $ = require('jquery');
 
 // console.log($);
 
-(function ($) {
-    $(function () {
-        $('body').css('color','green');
-        $(document).on('click',(e)=>{
-            console.log(e);
-        })
-    })
-})($)
+const myAdmin = {
+    value: 212,
+   test() {
+       console.log(this.value);
+   }
+}
+
+
+
+$(function () {
+    $('body').css('color','green');
+    $(document).on('click',(e)=>{
+        console.log(e.currentTarget);
+    });
+    myAdmin.test();
+});
+
