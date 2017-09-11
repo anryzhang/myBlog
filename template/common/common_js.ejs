@@ -1,1 +1,5 @@
-<script src="/common/bundle.js"></script>
+
+<% if(env === 'production'){ %>
+<link rel="stylesheet" href="/common.build.css">
+<%}%>
+<script src="/common.build.js"></script>

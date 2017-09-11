@@ -8,7 +8,7 @@ console.log(isDev);
 var productionConfig = [{
     entry:entry_config(hotMiddlewareScript,isDev),
     output: {
-        filename: './[name]/bundle.js',
+        filename: './[name].build.js',
         path: path.resolve(__dirname, './public'),
         publicPath: '/'
     },
@@ -17,17 +17,28 @@ var productionConfig = [{
             test: /\.(png|jpg)$/,
             use: 'url-loader?limit=8192&context=client&name=[path][name].[ext]'
         }, {
-            test: /\.scss$/,
+            test: /\.(css|scss)$/,
             use: ExtractTextPlugin.extract({
                 fallback: 'style-loader',
                 use: ['css-loader', 'resolve-url-loader', 'sass-loader?sourceMap']
             })
+        },{
+            test: /\.js$/,
+            exclude: '/node_modules/',
+            use: [
+                {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['es2015'],
+                    },
+                },
+            ]
         }]
     },
     plugins: [
         new CleanWebpackPlugin(['public']),
         new ExtractTextPlugin({
-            filename: './[name]/index.css',
+            filename: './[name].build.css',
             allChunks: true
         })
     ]

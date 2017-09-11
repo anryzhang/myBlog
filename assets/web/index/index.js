@@ -8,8 +8,3 @@ const $ = require('jquery');
 
 console.log($);
 
-$(()=>{
-    $(document).on('click',(e)=>{
-        console.log(e);
-    })
-})

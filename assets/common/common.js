@@ -1,4 +1,16 @@
 
+require('normalize.css');
+
+
 console.log("common.js");
 
-require('jquery');
+require('./common.scss');
+
+const $ = require('jquery');
+
+
+$(()=>{
+    $(document).on('click',(e)=> {
+        console.log(e.currentTarget);
+    });
+});

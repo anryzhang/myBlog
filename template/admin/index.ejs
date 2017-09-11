@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <title><%= title%></title>
     <% if (env=='production'){%>
-    <link rel="stylesheet" href="/admin_index/login.css">
+    <link rel="stylesheet" href="/admin_index.build.css">
     <%}%>
+    <%include ./../common/common_js.ejs%>
 </head>
 <body>
 <%= title%>
 
+<div class="test">
+    test
+</div>
 
-<script src="admin_index/bundle.js"></script>
+<script src="admin_index.build.js"></script>
 
 <%if(env !== 'production' && reload === true){%>
 <script src="/reload/reload.js"></script>

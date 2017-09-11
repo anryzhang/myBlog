@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><%= title%></title>
+    <title><%= title %></title>
 
-    <%if(env === 'production'){%>
-        <link rel="stylesheet" href="/web_index/index.css">
-    <%}%>
-    <% include ./../common/common_js.ejs%>
+    <% if(env === 'production'){ %>
+    <link rel="stylesheet" href="/web_index.build.css">
+    <% } %>
+    <% include ./../common/common_js.ejs %>
 </head>
 <body>
-<%= title%><br>
-<%= env%>
+<%= title %><br>
+<%= env %>
 <br>
-<%= reload%>
-<script src="web_index/bundle.js"></script>
+<%= reload %>
+<script src="web_index.build.js"></script>
 <% if (env !== "production" && reload === true) { %>
 <script src="/reload/reload.js"></script>
 <% } %>
