@@ -4,9 +4,10 @@
 "use strict";
 require('./login.scss');
 console.log('login');
-
+const md5 = require('md5');
 const $ = require('jquery')
 const API = require('./../../apiList');
+
 
 const loginModule = {
     init(){
@@ -25,10 +26,11 @@ const loginModule = {
             console.log(e);
             let _data = {
                 name: self.J_name.val(),
-                password: self.J_password.val()
+                password: md5(self.J_password.val())
             }
             self.fetchData(API.login,'post',_data,(res)=>{
                 console.log(res);
+                location.href = location.origin + res.url;
             });
         });
     },
@@ -40,6 +42,10 @@ const loginModule = {
             data:parms,
             dataType:'json',
             success(res){
+                if(res.status != 100){
+                    alert(res.msg);
+                    return false;
+                }
                cb&&cb(res);
             },
             error(error){
