@@ -7,7 +7,7 @@ var app = express();
 var port = 3000;
 
 app.engine('html', consolidate.ejs);
-app.set('view engine', 'html');
+app.set('view engine', 'ejs');
 app.set('views', path.resolve(__dirname, './template'));
 
 // 所有视图的本地变量

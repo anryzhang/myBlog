@@ -2,12 +2,12 @@
   "name": "myblog",
   "version": "1.0.0",
   "description": "<a href=\"http://anryzhang.github.io/myBlog/\" target=\"_blank\" title=\"个人博客\">个人博客</a>",
-  "main": "app.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/anryzhang/myBlog.git"
   },
   "author": "",
+  "main": "app.js",
   "scripts": {
     "start": "cross-env NODE_ENV=dev supervisor -w server,app.js -e node,js,html app",
     "browsersync": "cross-env NODE_ENV=dev node app_browsersync",
@@ -15,6 +15,7 @@
     "production": "webpack --config webpack.production.config.js -p & cross-env NODE_ENV=production node app"
   },
   "homepage": "https://github.com/anryzhang/myBlog#readme",
+  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.17.2",
     "consolidate": "^0.14.5",
@@ -22,6 +23,7 @@
     "cookie-session": "^1.3.1",
     "ejs": "^2.5.7",
     "express": "^4.15.4",
+    "jquery": "^3.2.1",
     "multer": "^1.3.0",
     "mysql": "^2.14.1",
     "normalize.css": "^7.0.0"
