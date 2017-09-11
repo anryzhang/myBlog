@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title><%= title%></title>
+    <% if (env=='production'){%>
+    <link rel="stylesheet" href="/admin_index.build.css" />
+    <%}%>
+    <% include ./../common/common_js.ejs%>
+</head>
+<body>
+
+<div class="J_loginBox login_box">
+    <div class="item_label">
+        用户名: <input type="text" class="J_name">
+    </div>
+    <div class="item_label">
+        密&nbsp;&nbsp;码: <input type="password" class="J_password">
+    </div>
+    <div class="item_label">
+        <input type="button" value="提交" class="J_loginBtn">
+    </div>
+</div>
+
+<script src="/admin_index.build.js"></script>
+
+<%if(env !== 'production' && reload === true){%>
+<script src="/reload/reload.js"></script>
+<%}%>
+</body>
+</html>

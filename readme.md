@@ -14,4 +14,5 @@
     * `npm run production` 打包用于生产.
     * `npm run build` 前端打包测试...
 
-
+3.  node-inspector&
+    http://127.0.0.1:8080/?port=5858 
