@@ -17,6 +17,6 @@ router.post('/login',(req,res,next)=>{
     res.json({status:100,msg:'成功',data:_data});
 
 
-})
+});
 
 module.exports = router;
