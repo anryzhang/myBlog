@@ -10,10 +10,9 @@
     <% include ./../common/common_js.ejs %>
 </head>
 <body>
-<%= title %><br>
-<%= env %>
-<br>
-<%= reload %>
+
+<% include ./../common/web_nav.ejs%>
+
 <script src="web_index.build.js"></script>
 <% if (env !== "production" && reload === true) { %>
 <script src="/reload/reload.js"></script>
