@@ -3,4 +3,13 @@
  */
 "use strict";
 require('./index.scss');
-console.log('index');
+console.log('index 11');
+const $ = require('jquery');
+
+console.log($);
+
+$(()=>{
+    $(document).on('click',(e)=>{
+        console.log(e);
+    })
+})

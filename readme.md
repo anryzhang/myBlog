@@ -1,20 +1,17 @@
 <a href="http://anryzhang.github.io/myBlog/" target="_blank" title="个人博客">个人博客</a>
 
-1. Clone this repo.
 
-2. Install dependencies.
+
+1. 安装.
 
         npm install
         npm install supervisor -g
 
-3. Try these out.
+2. 运行.
 
-    * `npm start` to develop with full live reload.
-    * `npm run browsersync` is a alternative for development. It may be faster when modifying the express views
-    (templates) only.
-    * `npm run production` to emit outputs and run the express for production.
-    * `npm run build` if you care about what is hold in memory for development...
+    * `npm start` 开发环境.
+    * `npm run browsersync` 浏览器模拟生产
+    * `npm run production` 打包用于生产.
+    * `npm run build` 前端打包测试...
 
-## Preview
 
-![example preview](https://raw.githubusercontent.com/kenanpengyou/kenanpengyou.github.io/master/assets/used-images/projects/express-webpack-full-live-reload-example/preview.gif)
