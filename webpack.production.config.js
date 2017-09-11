@@ -1,37 +1,36 @@
-var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
-
-var publicPath = 'http://localhost:3000/';
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 var hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
 let entry_config = require('./entry_config');
 let isDev = process.env.NODE_ENV == 'dev';
 console.log(isDev);
-var devConfig = {
+var productionConfig = [{
     entry:entry_config(hotMiddlewareScript,isDev),
     output: {
         filename: './[name]/bundle.js',
         path: path.resolve(__dirname, './public'),
-        publicPath: publicPath
+        publicPath: '/'
     },
-    devtool: 'eval-source-map',
     module: {
         rules: [{
             test: /\.(png|jpg)$/,
             use: 'url-loader?limit=8192&context=client&name=[path][name].[ext]'
         }, {
             test: /\.scss$/,
-            use: [
-                'style-loader',
-                'css-loader?sourceMap',
-                'resolve-url-loader',
-                'sass-loader?sourceMap'
-            ]
+            use: ExtractTextPlugin.extract({
+                fallback: 'style-loader',
+                use: ['css-loader', 'resolve-url-loader', 'sass-loader?sourceMap']
+            })
         }]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin()
+        new CleanWebpackPlugin(['public']),
+        new ExtractTextPlugin({
+            filename: './[name]/index.css',
+            allChunks: true
+        })
     ]
-};
+}];
 
-module.exports = devConfig;
+module.exports = productionConfig;

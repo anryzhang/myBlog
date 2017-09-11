@@ -10,7 +10,7 @@ let router = express.Router();
 
 //检查登录
 router.use((req,res,next)=>{
-    // console.log(req);
+    console.log(req.session);
     if(!req.session['admin_id'] && req.url != '/login'){
         res.redirect('/admin/login');
     }else{
