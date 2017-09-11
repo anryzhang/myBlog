@@ -9,7 +9,6 @@ const DB = require('./DB');
 const util = require('./util');
 
 let router = express.Router();
-
 router.post('/login',(req,res,next)=>{
     // console.log(req.body);
     let _data = {
@@ -24,7 +23,6 @@ router.post('/login',(req,res,next)=>{
         if(err){
             res.status(200).json({status:500,msg:'mysql error'});
         }else{
-            // console.log(result);
             let isUser = false;
             let id = '';
             for(let key in result){
@@ -44,8 +42,6 @@ router.post('/login',(req,res,next)=>{
         }
 
     });
-
-
 
 });
 

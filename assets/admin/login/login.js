@@ -20,16 +20,13 @@ const loginModule = {
     },
     handleing(){
         let self = this;
-
         self.J_loginBox.on('click','.J_loginBtn',(e)=>{
             e.stopPropagation();
-            console.log(e);
             let _data = {
                 name: self.J_name.val(),
                 password: md5(self.J_password.val())
             }
             self.fetchData(API.login,'post',_data,(res)=>{
-                console.log(res);
                 location.href = location.origin + res.url;
             });
         });
