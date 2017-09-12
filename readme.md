@@ -10,6 +10,7 @@
               commom --- 公共模块
               apiList.js --- 接口文档列表
        public --- build目录
+       static --- 静态文件
        server ---
             api    --- 接口目录
             routes --- 页面路由

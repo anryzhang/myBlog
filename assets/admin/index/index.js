@@ -21,12 +21,11 @@ const adminIndexModule = {
                 url: API.loginOut,
                 method: 'post',
                 success(res){
-                    console.log(res);
                     if(res.status == 100){
                         location.reload(true);
                     }
                 }
-            })
+            });
         });
     }
 };
