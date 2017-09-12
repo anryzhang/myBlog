@@ -45,4 +45,12 @@ router.post('/login',(req,res,next)=>{
 
 });
 
+router.post('/loginOut',(req,res)=>{
+    let _sess_id = req.session['admin_id'];
+    if(_sess_id){
+        delete req.session['admin_id'];
+        res.status(200).json({status:100,msg:'退出登录成功'});
+    }
+});
+
 module.exports = router;

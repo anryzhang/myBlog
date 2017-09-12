@@ -5,5 +5,6 @@
 "use strict";
 
 module.exports = {
-    login:'/server/login'
+    login:'/server/login',
+    loginOut:'/server/loginOut'
 }
