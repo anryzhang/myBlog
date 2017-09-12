@@ -32,4 +32,4 @@ const adminIndexModule = {
 
 $(()=>{
     adminIndexModule.init();
-})
+});
