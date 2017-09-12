@@ -29,6 +29,7 @@ if (isDev) {
         }
     }));
     app.use(webpackHotMiddleware(compiler));
+    app.use(express.static(path.join(__dirname,'static')));
 
     require('./server/routes')(app);
 
@@ -48,6 +49,8 @@ if (isDev) {
 
 } else {
     app.use(express.static(path.join(__dirname, 'public')));
+    app.use(express.static(path.join(__dirname,'static')));
+
     require('./server/routes')(app);
     app.listen(port, function () {
         console.log('App (production) is now running on port 3000!');
