@@ -8,5 +8,4 @@ module.exports = function (app) {
         res.json({status:200,msg:'成功',id:req.params.id});
     });
 
-
 };
