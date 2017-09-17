@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <title><%= title%></title>
+
+    <% include ./../common/common_js.ejs%>
+
     <% if (env=='production'){%>
     <link rel="stylesheet" href="/admin_login.build.css" />
     <%}%>
-    <% include ./../common/common_js.ejs%>
+
 </head>
 <body>
 
@@ -24,8 +27,6 @@
 
 <script src="/admin_login.build.js"></script>
 
-<%if(env !== 'production' && reload === true){%>
-<script src="/reload/reload.js"></script>
-<%}%>
+<% include ./../common/admin_common_footer.ejs%>
 </body>
 </html>

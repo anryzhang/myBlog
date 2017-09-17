@@ -1,0 +1,59 @@
+
+.blog_from{
+  width: 600px;
+  margin: 15px auto;
+  padding: 15px;
+  border: 1px solid #efefef;
+  .item{
+    padding: 10px;
+    span{
+      display: inline-block;
+      padding-right: 15px;
+      width: 100px;
+      text-align: right;
+      vertical-align: top;
+    }
+    input{
+      display: inline-block;
+      width: 320px;
+
+    }
+    textarea{
+      display: inline-block;
+      height: 80px;
+      width: 320px;
+    }
+  }
+  .fun_btn{
+    text-align: right;
+    .btn{
+      display: inline-block;
+      padding:0 15px;
+      font-size: 13px;
+      line-height: 26px;
+      background: #000;
+      color: #fff;
+      cursor: pointer;
+      text-align: center;
+      width: 80px;
+
+    }
+  }
+}
+
+.blog_list{
+  margin-top: 30px;
+  border:1px solid #efefef;
+  .item{
+    padding:10px;
+    border-bottom:1px solid #efefef;
+    span{
+      display: inline-block;
+      padding:0 10px;
+
+    }
+    &:last-child{
+      border-bottom:none;
+    }
+  }
+}

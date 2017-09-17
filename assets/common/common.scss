@@ -9,6 +9,22 @@ body {
     background: url('./common_image.png');
 }
 
+.layout{
+    width: 1020px;
+    margin: 0 auto;
+
+}
+
+.site_header{
+    border-bottom:2px solid #000;
+    margin-bottom: 15px;
+    h1{
+        font-size: 28px;
+        padding:10px 0;
+        margin: 0;
+    }
+}
+
 .login_out{
     display: inline-block;
     cursor: pointer;

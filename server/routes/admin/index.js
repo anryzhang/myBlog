@@ -7,6 +7,8 @@ const express = require('express');
 
 let router = express.Router();
 
+let nav = require('./nav');
+
 router.use((req, res, next) => {
     console.log(req.session);
     if (!req.session['admin_id'] && req.url != '/login') {
@@ -18,7 +20,7 @@ router.use((req, res, next) => {
 
 router.get('/',(req,res)=>{
     res.render('./admin/index',{title:'登录成功'});
-})
+});
 
 router.get('/login', (req, res) => {
     if(req.session['admin_id']){
@@ -28,5 +30,8 @@ router.get('/login', (req, res) => {
 
     }
 });
+//admin/*下路由
+router.use('/',nav);
+
 
 module.exports = router;

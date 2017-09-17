@@ -6,5 +6,9 @@
 
 module.exports = {
     login:'/server/login',
-    loginOut:'/server/loginOut'
+    loginOut:'/server/loginOut',
+    selectBlog:'/server/blog',
+    addBlog:'/server/blog/add',
+    updateBlog:'/server/blog/update',
+    delBlog:'/server/blog/del',
 }

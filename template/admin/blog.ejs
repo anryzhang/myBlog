@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>文章列表</title>
+  <% include ./../common/common_js.ejs%>
+
+
+
+</head>
+<body>
+
+<div class="layout">
+  <% include ./../common/admin_logined_nav.ejs%>
+
+  <div class="J_blogFrom blog_from">
+    <div class="item">
+        <span>标题</span>
+        <input type="text" class="J_title title">
+    </div>
+    <div class="item">
+      <span>图片</span>
+    </div>
+    <div class="item">
+       <span>摘要</span>
+       <textarea class="J_summary summary"></textarea>
+    </div>
+    <div class="item">
+      <span>内容</span>
+      <textarea class="J_content content"></textarea>
+    </div>
+    <div class="item">
+      <div class="fun_btn">
+        <span class="J_save btn">保存</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="J_blogList blog_list"></div>
+
+</div>
+
+
+
+
+<script src="/admin_blog.build.js"></script>
+<% include ./../common/admin_common_footer.ejs%>
+</body>
+</html>

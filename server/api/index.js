@@ -9,6 +9,9 @@ const DB = require('./DB');
 const util = require('./util');
 
 let router = express.Router();
+
+
+
 router.post('/login',(req,res,next)=>{
     // console.log(req.body);
     let _data = {
@@ -52,5 +55,9 @@ router.post('/loginOut',(req,res)=>{
         res.status(200).json({status:100,msg:'退出登录成功'});
     }
 });
+
+const blog = require('./blog/index');
+
+router.use('/blog',blog);
 
 module.exports = router;

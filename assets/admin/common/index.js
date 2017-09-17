@@ -34,5 +34,5 @@ const adminIndexModule = {
 };
 
 $(()=>{
-    // adminIndexModule.init();
+    adminIndexModule.init();
 });

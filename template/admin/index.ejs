@@ -3,21 +3,28 @@
 <head>
     <meta charset="UTF-8" />
     <title><%= title%></title>
+
+    <% include ./../common/common_js.ejs%>
+
     <% if (env=='production'){%>
     <link rel="stylesheet" href="/admin_index.build.css" />
     <%}%>
-    <% include ./../common/common_js.ejs%>
+
 </head>
 <body>
+<div class="layout">
+    <% include ./../common/admin_logined_nav.ejs%>
+    登录成功
 
-登录成功
-<span class="J_loginOut login_out">退出登录</span>
+</div>
+
+
+
 
 
 <script src="/admin_index.build.js"></script>
 
-<%if(env !== 'production' && reload === true){%>
-<script src="/reload/reload.js"></script>
-<%}%>
+<% include ./../common/admin_common_footer.ejs%>
+
 </body>
 </html>
