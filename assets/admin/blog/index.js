@@ -8,17 +8,61 @@ require('./index.scss');
 const API = require('./../../apiList');
 const $ = require('jquery');
 
+const BlogModule = {
+    init(){
+        let self = this;
+        self.J_blogFrom = $(document).find('.J_blogFrom');
+        self.J_blogList = $(document).find('.J_blogList');
 
-$(function () {
 
-    let J_blogFrom = $(document).find('.J_blogFrom');
-    
-    let _addBlogData = function (cb) {
+        self.handleing();
+        self.getBlogList();
+    },
+    handleing(){
+        let self = this;
+        self.J_blogFrom.on('click','.J_save',(e)=>{
+            e.preventDefault();
+            e.stopPropagation();
+
+            self.addBlogData(()=>{
+                self.getBlogList();
+            });
+        });
+
+        self.J_blogList.on('click','.J_del',(e)=>{
+            e.preventDefault();
+            e.stopPropagation();
+            let id = $(e.currentTarget).attr('data-id');
+            self.delBlogItem(id,()=>{
+                self.getBlogList();
+            });
+
+        })
+
+    },
+    delBlogItem(id,cb){
+        $.ajax({
+            url:API.delBlog,
+            method:'post',
+            data:{
+                id:id
+            },
+            dataType:'json',
+            success(res){
+                console.log(res);
+                if(res.status == 100){
+                    cb&&cb();
+                }
+            }
+        })
+    },
+    addBlogData(cb){
+        let self = this;
         let _data = {
-            title:J_blogFrom.find('.J_title').val(),
+            title:self.J_blogFrom.find('.J_title').val(),
             picSrc: '',
-            summary: J_blogFrom.find('.J_summary').val(),
-            content: J_blogFrom.find('.J_content').val()
+            summary: self.J_blogFrom.find('.J_summary').val(),
+            content: self.J_blogFrom.find('.J_content').val()
         };
 
         if(!_data.title || !_data.summary || !_data.content ){
@@ -35,18 +79,17 @@ $(function () {
             success(res){
                 console.log(res);
                 if(res.status == 100){
-                    J_blogFrom.find('.J_title').val('');
-                    J_blogFrom.find('.J_summary').val('');
-                    J_blogFrom.find('.J_content').val('');
+                    self.J_blogFrom.find('.J_title').val('');
+                    self.J_blogFrom.find('.J_summary').val('');
+                    self.J_blogFrom.find('.J_content').val('');
                     cb&&cb();
                 }
             }
         });
 
-    }
-
-    let _getBlogList = function () {
-
+    },
+    getBlogList(){
+        let self = this;
         $.ajax({
             url: API.selectBlog,
             method:'get',
@@ -57,38 +100,35 @@ $(function () {
             success(res){
                 console.log(res);
                 if(res.status == 100){
-
-                    let J_blogList = $(document).find('.J_blogList');
                     let _html = '';
                     let data = res.result;
-
-
                     data.forEach((cur)=>{
-                        _html += `<div class="item"><span>${cur.id}</span>
+                        _html += `<div class="item">
+                                <span>${cur.id}</span>
                                 <span>${cur.title}</span>
                                 <span>${cur.summary}</span>
+                                ${self.returnFun(cur)}
                                 </div>`;
-                    })
+                    });
 
-
-                    J_blogList.empty().append($(_html));
+                    self.J_blogList.empty().append($(_html));
 
                 }
             }
         });
+    },
+    returnFun(obj){
+        let self = this;
+        if(obj.isOwner){
+            return `<span data-id="${obj.id}" class="J_del fun">删除</span>`;
+        }else{
+            return `<span></span>`
+        }
     }
+};
 
-    _getBlogList();
+$(function () {
 
-    J_blogFrom.on('click','.J_save',(e)=>{
-        e.preventDefault();
-        e.stopPropagation();
-
-        _addBlogData(()=>{
-            _getBlogList();
-        });
-        
-
-    });
+    BlogModule.init();
 
 });

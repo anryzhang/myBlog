@@ -24,17 +24,18 @@ router.get('/',(req,res)=>{
         }else{
 
             console.log(result);
-
+            result.forEach((cur)=>{
+                if(cur.author == _sess_id){
+                    cur.isOwner = true;
+                }else{
+                    cur.isOwner = false;
+                }
+            });
             res.status(200).json({status:100,msg:'查询成功',result:result});
-
 
         }
 
-
     });
-
-
-
 
 });
 
@@ -74,7 +75,24 @@ router.post('/add',(req,res)=>{
       }
    });
 
-
 });
+
+router.post('/del',(req,res)=>{
+    let _sess_id = req.session['admin_id'];
+    if(!_sess_id){
+        res.status(200).json({status:400,msg:'请先登录!'});
+        return false;
+    }
+    let id = req.body.id;
+    DB.query(`delete from blog_table where id= '${id}'`,(err,result)=>{
+       if(err){
+           console.log(err);
+           res.status(200).json({status:500,msg:'mysql error'});
+       }else{
+           res.status(200).json({status:100,msg:'删除成功',result:result});
+       }
+    });
+
+})
 
 module.exports = router;
