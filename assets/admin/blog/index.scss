@@ -35,7 +35,7 @@
       color: #fff;
       cursor: pointer;
       text-align: center;
-      width: 80px;
+      width:auto;
 
     }
   }
@@ -46,20 +46,23 @@
     margin-top: 30px;
   }
   border:1px solid #efefef;
-  .item{
+  .row_item{
     padding:10px;
     border-bottom:1px solid #efefef;
-    span{
+    .item{
       display: inline-block;
       padding:0 10px;
       width: 20%;
-      &.fun{
-        color: #3a82ff;
-        cursor: pointer;
+      span{
+        &.fun{
+          color: #3a82ff;
+          cursor: pointer;
+        }
+      }
+      &:last-child{
+        border-bottom:none;
       }
     }
-    &:last-child{
-      border-bottom:none;
-    }
   }
+
 }
