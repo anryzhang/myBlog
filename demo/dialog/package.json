@@ -25,7 +25,7 @@
     "gulp-sass": "^2.2.0",
     "gulp-shell": "^0.5.2",
     "gulp-uglify": "^1.5.3",
-    "jquery": "^2.2.1",
+    "jquery": "^3.5.0",
     "modularized-normalize-scss": "git+https://github.com/hail2u/normalize.scss.git",
     "zepto": "^1.0.1"
   },
