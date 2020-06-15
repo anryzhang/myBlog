@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="react.development.js"/>
+    <script src="react-dom-unstable-native-dependencies.development.js"></script>
+    <script src="browser.js"></script>
+
+</head>
+
+<body>
+<div id="root"></div>
+
+
+<script type="text/jsx">
+    function Home(){
+
+        return('test')
+    }
+
+    ReactDom.render(
+        <Home/>,
+        document.getElementById('root')
+    )
+</script>
+
+</body>
+</html>
